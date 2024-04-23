@@ -1,0 +1,21 @@
+{
+  "name": "pcall.js",
+  "version": "0.0.2-1",
+  "description": "Lua pcall inspired - calls the function f with the given arguments in protected mode",
+  "author": "metaory <metaory@gmail.com>",
+  "bugs": "https://github.com/metaory/pcall.js/issues",
+  "homepage": "https://github.com/metaory/pcall.js#readme",
+  "repository": "metaory/pcall.js",
+  "module": "dist/index.mjs",
+  "main": "dist/index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "build": "bundt",
+    "dev": "node src"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "devDependencies": {
+    "bundt": "^1.1.5"
+  }
+}
