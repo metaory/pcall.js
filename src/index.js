@@ -5,7 +5,7 @@ const ERRORS = [
   "PLACE_HOLDER_B",
 ];
 
-const ERR = ERRORS.reduce((acc, cur) => ({ [cur]: E[cur], ...acc }), {});
+const ERR = ERRORS.reduce((acc, cur) => ({ [cur]: cur, ...acc }), {});
 
 // 🚫 TODO: HOOKS & PLUGINS ARE NOT_IMPLEMENTED
 const PCALL = { hooks: {}, plugins: {} };
