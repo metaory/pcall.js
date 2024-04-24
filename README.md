@@ -40,27 +40,29 @@ function clearBit(num, i) {
 
 ESM
 ---
+
 ```javascript
 import pcall from 'pcall.js'
 
 const [ok, xo] = await pcall(clearBit, 99, 6);
-// ok: true
-// xo: 35
-//   ---
-// ok: false
-// xo: noop
+
+  console.log({ ok, xo })
+  // { ok: true,  xo: 35 }
+  // { ok: false, xo: false }
 ```
 
 CJS
 ---
 ```javascript
+const pcall = require('pcall.js')
+
 async function main() {
   const [ok, xo] = await pcall(clearBit, 99, 6);
-  // ok: true
-  // xo: 35
-  //   ---
-  // ok: false
-  // xo: noop
+
+  console.log({ ok, xo })
+  // { ok: true,  xo: 35 }
+  // { ok: false, xo: false }
+
   return ok && xo
 }
 

@@ -8,12 +8,19 @@
   "repository": "metaory/pcall.js",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
+  "type": "module",
   "types": "index.d.ts",
+  "files": [
+    "*.d.ts",
+    "dist"
+  ],
   "scripts": {
     "build": "bundt",
     "dev": "node src"
   },
-  "keywords": [],
+  "keywords": [
+    "promise"
+  ],
   "license": "MIT",
   "devDependencies": {
     "bundt": "^1.1.5"
