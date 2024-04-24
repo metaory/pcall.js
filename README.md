@@ -1,18 +1,25 @@
 PCALL.js
 ========
 
-> 🚧 EARLY DEVELOPMENT -- DO NOT USE THIS 🚧
+<div align=center>
+    <img alt="logo-of-pcall" src="./github/pcall.png" width="30%"><br><br>
+    calls the function f with the given arguments in protected mode
+</div>
+
+
+> 🚧 EARLY DEVELOPMENT -- DO NOT USE THIS
 
 
 🚧 Lua pcall inspired - calls the function f with the given arguments in protected mode
 
+`pcall({f}, {arg1}, {...})` `pcall()` Calls function `{f}` with the given arguments in protected mode.
+This means that any error inside {f} is not propagated; instead, pcall catches the error and returns a status code.
+Its first result is the status code (a boolean), which is true if the call succeeds without errors.
+In such case, pcall also returns all results from the call, after this first result.
+In case of any error, pcall returns false plus the error message.
+
 This means that any error inside f is not propagated; instead, pcall catches the error and returns a status code.
 
-<!-- Its first result is the status code (a boolean), -->
-<!-- which is true if the call succeeds without errors. -->
-<!-- In such case, pcall also returns all results from the call, after this first result. -->
-<!-- In case of any error, pcall returns false plus the error object. -->
-<!-- Note that errors caught by pcall do not call a message handler. -->
 
 Installation
 ------------
@@ -61,7 +68,7 @@ async function main() {
 
   console.log({ ok, xo })
   // { ok: true,  xo: 35 }
-  // { ok: false, xo: false }
+  // { ok: false, xo: 'Error' }
 
   return ok && xo
 }
@@ -74,16 +81,25 @@ main()
 Development
 -----------
 
-```bash
-# dev
 npm run dev
 
 # build
 npm run build
-```
+
+ROADMAP
+-------
+- [ ] add custom options `Processors` functions for success & failure
+- [ ] add custom `Serializer` & `Deserialize` functions for request & response
+- [ ] add support for `hook`, to run at each stage of lifecycle _one_ use case can be `logging` and `monitoring`, ...
+- [ ] handle all internal errors with good message
+- [ ] import public API
+- [ ] write documentation
+- [ ] write tests
+- [ ] add examples
+
 
 License
 -------
 
-MIT
+[MIT](LICENSE)
 
