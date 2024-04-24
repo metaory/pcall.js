@@ -2,7 +2,7 @@ PCALL.js
 ========
 
 <div align=center>
-    <img alt="logo-of-pcall" src="./github/pcall.png" width="30%"><br><br>
+    <img alt="logo-of-pcall" src="./.github/assetspcall.png" width="30%"><br><br>
     calls the function f with the given arguments in protected mode
 </div>
 
