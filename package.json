@@ -8,7 +8,6 @@
   "repository": "metaory/pcall.js",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
-  "type": "module",
   "types": "index.d.ts",
   "files": [
     "*.d.ts",
@@ -16,7 +15,12 @@
   ],
   "scripts": {
     "build": "bundt",
-    "dev": "node src"
+    "publish": "npm version prerelease && npm run build && npm publish",
+	"dev": "node .dev/basic.mjs",
+    "dev:build": "bundt src/index.js --module && npm run dev",
+	"watch:build": "watchexec -w src -- 'npm run dev:build && npm run dev'",
+	"watch:dev": "watchexec --no-vcs-ignore -w .dev -- 'npm run dev'",
+	"watch": "npm run watch:build & npm run watch:dev"
   },
   "keywords": [
     "promise"
