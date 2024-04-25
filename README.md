@@ -1,8 +1,8 @@
 PCALL.js
 ========
 
-🔥 Protected calls for JavaScript with superpowers
---------------------------------------------------
+🔥 Protected calls for JS with Superpowers
+------------------------------------------
 
 <div align=center>
   <b> 🚧 UNDER ACTIVE DEVELOPMENT -- DO NOT USE ⛔</b>

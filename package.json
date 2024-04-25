@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "build": "bundt",
-    "publish": "npm version prerelease && npm run build && npm publish",
+    "pubxxxh": "npm version prerelease && npm run build && npm publish",
     "dev": "node .dev/basic.mjs",
     "dev:build": "bundt src/index.js --module && npm run dev",
     "watch:build": "watchexec -w src -- 'npm run dev:build && npm run dev'",
