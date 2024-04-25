@@ -1,6 +1,6 @@
 {
   "name": "pcall.js",
-  "version": "0.0.2-13",
+  "version": "0.0.2-14",
   "description": "Lua pcall inspired - calls the function f with the given arguments in protected mode",
   "author": "metaory <metaory@gmail.com>",
   "bugs": "https://github.com/metaory/pcall.js/issues",
