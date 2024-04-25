@@ -13,6 +13,8 @@
 // const validate = (val = 0, expected = 1) => val === expected;
 
 export default async function pcall(fn, ...args) {
+  console.warn('🚧 UNDER ACTIVE DEVELOPMENT')
+  console.warn('🔴 NOT PRODUCTION READY')
   try {
     // if (typeof fn !== "function")
     //   return [false, ERR.FIRST_ARG_IS_NOT_A_FUNCTION];
@@ -21,14 +23,14 @@ export default async function pcall(fn, ...args) {
     //   args = PCALL.hooks.serializer(...args);
     // }
     //
-    // const res = await fn(...args);
+    const res = await fn(...args);
     //
     // if (validate(PCALL.deserializer, "function")) {
     //   args = PCALL.deserializer(...args);
     // }
     //
-    // return [true, res];
-    return [12,2]
+    return [true, res];
+    // return [12,2]
   } catch (err) {
     console.error(err);
 
