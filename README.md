@@ -71,7 +71,7 @@ Lua Approach
 Lua approach to error handling is very simple yet powerful. ^[Lua:8.4](https://www.lua.org/pil/8.4.html), ^[Lua:8.5](https://www.lua.org/pil/8.5.html)
 We dont have any similar solution in the JavaScript ecosystem
 
-_We have some that try to ease this pain all are either efficient or have lost the direction and now are bloated with external reasoning's_
+_We have some attempts to ease this pain all are either inefficient or have lost the direction and now are bloated with external reasoning's_
 
 🔸 None are satisfying all my requirement
 🔹 `Pcall.js` is Lua `pcall` inspired with superpowers
