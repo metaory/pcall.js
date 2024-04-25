@@ -5,7 +5,7 @@
   "author": "metaory <metaory@gmail.com>",
   "bugs": "https://github.com/metaory/pcall.js/issues",
   "homepage": "https://github.com/metaory/pcall.js#readme",
-  "repository": "metaory/pcall.js",
+  "repository": "git+https://github.com/metaory/pcall.js.git",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
   "types": "index.d.ts",
