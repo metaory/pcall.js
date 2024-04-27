@@ -1,32 +1,40 @@
 {
   "name": "pcall.js",
-  "version": "0.0.2-21",
+  "version": "0.1.0",
   "description": "Lua pcall inspired - calls the function f with the given arguments in protected mode",
   "author": "metaory <metaory@gmail.com>",
   "bugs": "https://github.com/metaory/pcall.js/issues",
   "homepage": "https://github.com/metaory/pcall.js#readme",
   "repository": "git+https://github.com/metaory/pcall.js.git",
-  "module": "dist/index.mjs",
-  "main": "dist/index.js",
-  "types": "index.d.ts",
+  "type": "module",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=20"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./dist/index.mjs",
+        "types": "./dist/index.d.mts"
+      },
+      "require": {
+        "default": "./dist/index.cjs",
+        "types": "./dist/index.d.cts"
+      }
+    }
+  },
   "files": [
-    "*.d.ts",
-    "dist"
+    "dist",
+    "LICENSE"
   ],
   "scripts": {
-    "build": "bundt",
-    "pubxxxh": "npm version prerelease && npm run build && npm publish",
-    "dev": "node .dev/basic.mjs",
-    "dev:build": "bundt src/index.js --module && npm run dev",
-    "watch:build": "watchexec -w src -- 'npm run dev:build && npm run dev'",
-    "watch:dev": "watchexec --no-vcs-ignore -w .dev -- 'npm run dev'",
-    "watch": "npm run watch:build & npm run watch:dev"
+    "build": "npx unbuild",
+    "build:stub": "npx unbuild --stub",
+    "dev": "node --watch-path=src --watch-path=test test/dev.test.js"
   },
   "keywords": [
     "promise"
   ],
   "license": "MIT",
-  "devDependencies": {
-    "bundt": "^1.1.5"
-  }
+  "devDependencies": {}
 }
