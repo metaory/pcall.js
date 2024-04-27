@@ -1,94 +1,80 @@
 PCALL.js
 ========
 
-🔥 Protected calls for JS with Superpowers
-------------------------------------------
+🔥 Protected calls for JS with Superpowers ⚡
+--------------------------------------------
 
 <div align=center>
-  <b> 🚧 UNDER ACTIVE DEVELOPMENT -- DO NOT USE ⛔</b>
+  <b> 🚧 DEVELOPMENT ⛔</b>
 </div>
 
 <div align=center>
   <img alt="logo-of-pcall" src="./.github/assets/pcall.png" width="70%"><br><br>
-  <h3>Centralized your Error handling, Logs, Notifications and more</h3>
+  <h3>Centralized your Error handling, Monitoring, Notifications and more</h3>
   <h3>    </h3>
   <b>🔻 no more nested try...catch!</b><br>
-  <b>🔻 no more miss a try...catch!</b><br>
-
-  <p><b>Pcall.js</b> is an <b>extendable</b> utility that you <b>encapsulate</b> your functions</p>
+  <p><b>Pcall.js</b> is an <b>extendable</b>utility that let you <b>encapsulates asynchronous operations</b> safely</p>
+  <br>
+  <p><b>Zero dependency</b>, <b>Zero configuration</b>, <b>Lightweight</b>, <b>Framework agnostic</b></p>
 </div>
-
-
----
-
-<div align=center>
-  <p>🚧 <b>EARLY DEVELOPMENT</b></p>
-  <p>🚫 <b>DO NOT USE PRE-Release</b></p>
-</div>
-
----
-
-#### Exposing **Simple** API and an **Advance** API for a **Safer** and more **Transparent** `asynchronous` / `synchronous` programming.
-
-##### With _optional_ advance features like `Hook injections`, `processors plugins`
 
 ---
 
 Features
 --------
-- [ ] 🔹*Graceful* Error handling
-- [ ] 🔹*Promise* and *Non-Promises* Support
-- [ ] 🔹*Uniform and deterministic* result for all your critical function
-- [ ] 🔸*Plugin System* -- provide handlers to overwrite some default behaviours
-  - [ ] 🔸`Serializer`  - custom handler
-  - [ ] 🔸`Deserialize` - custom handler
-  - [ ] 🔸`Reducer`     - custom handler to reduce the outcome
-- [ ] 🔸*Hook System* -- provide hook functions to run at each stage of lifecycle.
-  - [ ] 🔸_TODO_DEFINE_LIFECYCLE_EVENTS_
+- **Zero-dependency:** Works in Node.js (**ESM** & **CJS**) and all modern browsers
+- **Zero-configuration:** Provides opt-in configuration for advance usage
+- **Fault-tolerant:** Uniform and deterministic asynchronous operations
+- **Extendable**: Lifecycle Hooks, Processors, Serializer, Parser
+- **Humanized API:** Simple to get started with a reasonable API
+- **Lightweight**: under (2 KB)
+
+
+Intro
+-----
+`pcall({f}, {arg1}, {...})`
+`pcall()` Calls function `{f}` with the given arguments in **protected mode**.
+This means that any error inside `{f}` is not propagated;
+Instead, `pcall` catches the error and returns a tuple.
+
+Its first element is the status code (a boolean),
+which is true if the call succeeds without errors.
+And all results from the call, on second element; `[true, {res}]`
+
+In case of any error, pcall returns false plus the error message; `[false, {err}]`
 
 ---
 
 Problem
 -------
-How the Industry trying to workaround this problem.
-Is fragmented and requires different hacks and workaround to get some consistency
-We dont have clear control or visibility on what is happening,
-Unless we spend time to write custom code for each potential failure that we suspect
-This is prune to human err and demands a lot of boilerplate, getting good visibility is another challenge & an industry!
+You might have an entire function wrapped in a try..catch;
+In which you have figure our which call throw the error.
+Lack of control and visibility.
+
+You might wrap each async call in it's own try...catch;
+Which is ugly and too verbose.
+
+You might write a utility to wrap an capture each call.
+
+It's fragmented, hacky and not consistent.
+
 
 Prelude
 -------
-I have been writing a lot of [Lua](https://en.wikipedia.org/wiki/Lua_(programming_language)) for over 7-8 years now
-Authoring new modules for my window manage [AWM](https://awesomewm.org)
-Authoring new Plugins or Extending some for my editor [nVim](https://neovim.io/)
-My Terminal [Alacritty](https://alacritty.org) / [Wezterm](https://wezfurlong.org/wezterm)
-My work on [xmake](https://github.com/xmake-io/xmake)
-Embedding Lua to some non-standard projects
-And some personal side projects and scripts
+Having write good amount of [Lua](https://en.wikipedia.org/wiki/Lua_(programming_language)) For various components of my toolchain, like; [AWM](https://awesomewm.org), [nVim](https://neovim.io/), [Alacritty](https://alacritty.org), [Wezterm](https://wezfurlong.org/wezterm)
+I've come to love it's simple and convenient approach.
 
-Lua Approach
-------------
-Lua approach to error handling is very simple yet powerful. ^[Lua:8.4](https://www.lua.org/pil/8.4.html), ^[Lua:8.5](https://www.lua.org/pil/8.5.html)
-We dont have any similar solution in the JavaScript ecosystem
 
-_We have some attempts to ease this pain all are either inefficient or have lost the direction and now are bloated with external reasoning's_
+Inspiration
+-----------
+Lua approach to error handling is simple yet powerful. ^[Lua:8.4](https://www.lua.org/pil/8.4.html), ^[Lua:8.5](https://www.lua.org/pil/8.5.html)
 
-🔸 None are satisfying all my requirement
-🔹 `Pcall.js` is Lua `pcall` inspired with superpowers
+🔹 `Pcall.js` is inspired by Lua `pcall` **with superpowers**!
 
-It calls the function f with the given arguments in protected mode
-
-> `pcall({f}, {arg1}, {...})` `pcall()` Calls function `{f}` with the given arguments in protected mode.
-This means that any error inside {f} is not propagated; instead, pcall catches the error and returns a status code.
-Its first result is the status code (a boolean), which is true if the call succeeds without errors.
-In such case, pcall also returns all results from the call, after this first result.
-In case of any error, pcall returns false plus the error message.
-
-> This means that any error inside f is not propagated; instead, pcall catches the error and returns a status code.
 
 Installation
 ------------
-```bash
+```sh
 # install
 npm install pcall.js
 ```
@@ -108,58 +94,88 @@ function clearBit(num, i) {
 }
 ```
 
-ESM
+ESM / CJS
+---------
+
+```javascript
+import pcall from 'pcall.js'
+// or
+const pcall = require('pcall.js')
+```
+
 ---
+
+Basic Usage
+-----------
+
 ```javascript
 import pcall from 'pcall.js'
 
-const [ok, xo] = await pcall(clearBit, 99, 6);
+const [ok, res] = await pcall(clearBit, 'hoge', [99, 6], { xorg: 'X11' });
 
-  console.log({ ok, xo })
-  // { ok: true,  xo: 35 }
-  // { ok: false, xo: false }
+console.log(ok, res)
+// <true|false>,  <...>
 ```
 
-CJS
----
+Advance Usage*
+-------------
+
+🚧 _NOT_IMPLEMENTED_
 ```javascript
-const pcall = require('pcall.js')
+import Pcall from 'pcall.js'
 
-async function main() {
-  const [ok, xo] = await pcall(clearBit, 99, 6);
+// Create a custom pcall instance for advance usage
+const pcall = Pcall.setup({
+  // runs on success, passing context and result
+  pass_hook: (ctx, res) => { /* do stuff */ },
 
-  console.log({ ok, xo })
-  // { ok: true,  xo: 35 }
-  // { ok: false, xo: 'Error' }
+  // runs on failure, passing context and error
+  fail_hook: (ctx, err) => { /* do stuff */ },
 
-  return ok && xo
-}
+  // runs before success hook, transform the success result
+  pass_transformer: (res) => ({ hoge: 'fuga', ...res }),
 
-main()
-  .then(console.log)
-  .catch(console.error)
+  // runs before failure hook, transform the failure error
+  fail_transformer: (err) => ({ frob: 'xyzzy', err.message })
+
+  // NOTE: the transformers only modify the success/failure message
+  // NOT the structure
+})
+
+const [ok, res] = await pcall(somePromise, 'hoge', ['fuga', 'nyoro'], { xorg: 'X11' });
+
+console.log(ok, res)
+// <true|false>,  <...>
 ```
 
 Development
 -----------
 ```bash
-# install
+# run test playground in watch mode
 npm run dev
 
-# build
+# build production
 npm run build
+
+# build stub
+npm run build:stub
 ```
 
-ROADMAP
--------
-- [ ] add custom options `Processors` functions for success & failure
-- [ ] add custom `Serializer` & `Deserialize` functions for request & response
-- [ ] add support for `hooks`, to run at each stage of lifecycle. <!-- Use case can be `logging` and `monitoring`, _or anything else..-->
-- [ ] handle all internal errors with good message
-- [ ] import public API
-- [ ] write documentation
-- [ ] write tests
-- [ ] add examples
+---
+
+TODO
+----
+- [ ] 🔸Lifecycle Hooks
+- [ ] 🔸Transformers for Success/Failure
+- [ ] 🔸Serializer
+- [ ] 🔸Parser
+- [ ] 🔸JSDoc
+- [ ] 🔸ESLint
+- [ ] 🔸Docs
+- [ ] 🔸Tests
+- [ ] 🔸Examples
+
+---
 
 License
 -------
