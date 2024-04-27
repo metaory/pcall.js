@@ -11,7 +11,7 @@ PCALL.js
   <h3>Centralized your Error handling, Monitoring, Notifications and more</h3>
   <h3>    </h3>
   <b>🌈 no more nested try...catch!</b><br>
-  <p><b>Pcall.js</b> is an <b>extendable</b> utility that let you <b>encapsulates asynchronous operations</b> safely</p>
+  <p><b>pcall.js</b> is an <b>extendable</b> utility that let you <b>encapsulates asynchronous operations</b> safely</p>
   <p><b>Zero dependency</b>, <b>Zero configuration</b>, <b>Lightweight</b>, <b>Framework agnostic</b></p>
 </div>
 
@@ -30,7 +30,7 @@ Features
 Prelude
 -------
 You might have an entire function wrapped in a try..catch;
-In which you have figure our which call throw the error.
+In which you have to figure out which call throw the error,
 Lack of control and visibility.
 
 You might wrap each async call in it's own try...catch;

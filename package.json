@@ -1,7 +1,7 @@
 {
   "name": "pcall.js",
   "version": "0.1.1-1",
-  "description": "Lua pcall inspired - calls the function f with the given arguments in protected mode",
+  "description": "pcall.js is an extendable utility that let you encapsulates asynchronous operations safely ━━ Zero-dependency, Zero-configuration, Lightweight",
   "author": "metaory <metaory@gmail.com>",
   "bugs": "https://github.com/metaory/pcall.js/issues",
   "homepage": "https://github.com/metaory/pcall.js#readme",
