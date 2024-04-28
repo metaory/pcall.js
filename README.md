@@ -4,7 +4,7 @@ PCALL.js
 <div align=center>
   <h1>🛟 Protected Asynchronous Operations 🦄</h1>
   <br>
-  <img alt="logo-of-pcall" src="./.github/assets/logo.png" width="70%"><br><br>
+  <img alt="logo-of-pcall" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/logo.png" width="70%"><br><br>
   <h3>Centralize Error handling, Monitoring, Notification and more</h3>
   ✴️<s>nested try...catch</s>✴️
   <p>▁▁▁▁▁▁▁▁</p>
