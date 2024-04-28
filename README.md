@@ -1,39 +1,39 @@
 PCALL.js
 ========
 
-🔥 Protected calls for JS with Superpowers 🦄
----------------------------------------------
-
 <div align=center>
-  <b> 🚧 DEVELOPMENT ⛔</b>
+  <h1>🛟 Protected Asynchronous Operations 🦄</h1>
   <br>
-  <img alt="logo-of-pcall" src="./.github/assets/pcall.png" width="70%"><br><br>
-  <h3>Centralized your Error handling, Monitoring, Notifications and more</h3>
-  <h3>    </h3>
-  <b>🌈 no more nested try...catch!</b><br>
-  <p><b>pcall.js</b> is an <b>extendable</b> utility that let you <b>encapsulates asynchronous operations</b> safely</p>
-  <p><b>Zero dependency</b>, <b>Zero configuration</b>, <b>Lightweight</b>, <b>Framework agnostic</b></p>
+  <img alt="logo-of-pcall" src="./.github/assets/logo.png" width="70%"><br><br>
+  <h3>Centralize Error handling, Monitoring, Notification and more</h3>
+  ✴️<s>nested try...catch</s>✴️
+  <p>▁▁▁▁▁▁▁▁</p>
+  <p><b>📦 zero-dependency</b>╶╴<b>🚀 zero-configuration</b>╶╴<b>⚙️ extendable</b></p>
 </div>
+
+---
+
+<div align=center>🚧 NOT PRODUCTION READY ☢️</div>
 
 ---
 
 Features
 --------
-- **Zero-dependency:** Works in Node.js (**ESM** & **CJS**) and all modern browsers
-- **Zero-configuration:** Provides opt-in configuration for advance usage
-- **Fault-tolerant:** Uniform and deterministic asynchronous operations
-- **Extendable**: Lifecycle Hooks, Processors, Serializer, Parser
-- **Humanized API:** Simple to get started with a reasonable API
-- **Lightweight**: under (2 KB)
+- 📦 **Zero-dependency:** Works in Node.js (**ESM** & **CJS**) and all modern browsers
+- 🚀 **Zero-configuration:** Provides opt-in configuration for advance usage
+- ⚙️  **Extendable**: Lifecycle Hooks, Processors, Serializer, Parser
+- 🛡️ **Fault-tolerant:** Uniform and deterministic asynchronous operations
+- 👻 **Humanized API:** Simple to get started with a reasonable API
+- 🌬️ **Lightweight**: under (2 KB)
 
 
 Prelude
 -------
-You might have an entire function wrapped in a try..catch;
+You might have an entire function wrapped in a `try..catch`;
 In which you have to figure out which call throw the error,
 Lack of control and visibility.
 
-You might wrap each async call in it's own try...catch;
+You might wrap each async call in it's own `try...catch`;
 Which is ugly and too verbose.
 
 You might write a utility to wrap an capture each call.
@@ -46,7 +46,7 @@ Inspiration
 -----------
 Lua approach to error handling is simple yet powerful. ^[Lua:8.4](https://www.lua.org/pil/8.4.html), ^[Lua:8.5](https://www.lua.org/pil/8.5.html)
 
-🔹 `Pcall.js` is heavily inspired by Lua `pcall` **with superpowers**!
+🔹 `pcall.js` is heavily inspired by Lua `pcall` **with superpowers**🦄!
 
 ---
 
@@ -153,19 +153,18 @@ npm run build:stub
 
 TODO
 ----
-- [ ] 🔸Lifecycle Hooks
-- [ ] 🔸Transformers for Success/Failure
-- [ ] 🔸Serializer
-- [ ] 🔸Parser
-- [ ] 🔸JSDoc
-- [ ] 🔸ESLint
-- [ ] 🔸Docs
-- [ ] 🔸Tests
-- [ ] 🔸Examples
+- [ ] 🌀 Lifecycle Hooks
+- [ ] 📦 Transformers for Success/Failure
+- [ ] 🔌 Serializer
+- [ ] 🧬 Parser
+- [ ] 📜 JSDoc
+- [ ] 🔧 ESLint
+- [ ] 📖 Docs
+- [ ] ⚠️  Tests
+- [ ] 💡 Examples
 
 ---
 
 License
 -------
 [MIT](LICENSE)
-
