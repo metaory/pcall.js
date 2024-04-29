@@ -44,7 +44,7 @@ It's fragmented, hacky and not consistent.
 
 Inspiration
 -----------
-Lua approach to error handling is simple yet powerful. ^[Lua:8.4](https://www.lua.org/pil/8.4.html), ^[Lua:8.5](https://www.lua.org/pil/8.5.html)
+Lua approach to error handling is simple yet powerful. ^[Lua:5.4](https://www.lua.org/manual/5.4/manual.html#pdf-pcall) ^[Lua:8.4](https://www.lua.org/pil/8.4.html), ^[Lua:8.5](https://www.lua.org/pil/8.5.html)
 
 🔹 `pcall.js` is heavily inspired by Lua `pcall` **with superpowers**🦄!
 
@@ -78,10 +78,10 @@ Usage
 -----
 ```javascript
 // ESM
-import pcall from 'pcall.js'
+import Pcall from 'pcall.js'
 
 // CJS
-const pcall = require('pcall.js')
+const Pcall = require('pcall.js')
 ```
 
 ---
@@ -90,16 +90,16 @@ Basic Usage
 -----------
 ```javascript
 // some promise
-const myPromise = (...x) =>
+const prom = (...x) =>
   new Promise((resolve, reject) =>
     Math.random() > 0.5 ? resolve(x) : reject(x),
   );
 ```
 
 ```javascript
-import pcall from 'pcall.js'
+import Pcall from 'pcall.js'
 
-const [ok, res] = await pcall(myPromise, 'hoge', [99, 7], { xorg: 'X11' });
+const [ok, res] = await Pcall(prom, 'hoge', [99, 7], { xorg: 'X11' });
 
 console.log(ok, res)
 // <true|false>,  <...>
@@ -108,29 +108,28 @@ console.log(ok, res)
 Advance Usage*
 -------------
 
-🚧 _NOT_IMPLEMENTED_
 ```javascript
 import Pcall from 'pcall.js'
 
 // Create a custom pcall instance for advance usage
-const pcall = Pcall.setup({
-  // runs on success, passing context and result
-  pass_hook: (ctx, res) => { /* do stuff */ },
+const pcall = new Pcall({
+  // 🚧 runs on success, passing context and result
+  onSuccess: (args, res) => { /* do stuff */ },
 
-  // runs on failure, passing context and error
-  fail_hook: (ctx, err) => { /* do stuff */ },
+  // 🚧 runs on failure, passing context and error
+  onFailure: (args, err) => { /* do stuff */ },
 
-  // runs before success hook, transform the success result
-  pass_transformer: (res) => ({ hoge: 'fuga', ...res }),
+  // 🚧 runs before success hook, transform the success result
+  successSerializer: (res) => ({ hoge: 'fuga', ...res }),
 
-  // runs before failure hook, transform the failure error
-  fail_transformer: (err) => ({ frob: 'xyzzy', err.message })
+  // 🚧 runs before failure hook, transform the failure error
+  failureSerializer: (err) => ({ frob: 'xyzzy', err.message })
 
   // NOTE: the transformers only modify the success/failure message
   // NOT the structure
 })
 
-const [ok, res] = await pcall(myPromise, 'hoge', ['fuga', 'nyoro'], { xorg: 'X11' });
+const [ok, res] = await pcall(prom, 'hoge', ['fuga', 'nyoro'], { xorg: 'X11' });
 
 console.log(ok, res)
 // <true|false>,  <...>
@@ -153,15 +152,15 @@ npm run build:stub
 
 TODO
 ----
-- [ ] 🌀 Lifecycle Hooks
-- [ ] 📦 Transformers for Success/Failure
-- [ ] 🔌 Serializer
-- [ ] 🧬 Parser
-- [ ] 📜 JSDoc
-- [ ] 🔧 ESLint
-- [ ] 📖 Docs
-- [ ] ⚠️  Tests
-- [ ] 💡 Examples
+- [.] 🌀 Lifecycle Hooks
+- [.] 📦 Transformers for Success/Failure
+- [.] 🔌 Serializer
+- [.] 🧬 Parser
+- [.] 📜 JSDoc
+- [.] 🔧 ESLint
+- [.] 📖 Docs
+- [.] ⚠️  Tests
+- [.] 💡 Examples
 
 ---
 
