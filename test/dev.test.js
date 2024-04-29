@@ -1,12 +1,24 @@
-import pcall from "../src/index.js";
+import Pcall from '../src/index.js'
 
-const { log: l } = console;
+const { log: l } = console
 
-const myPromise = (x) =>
-  new Promise((resolve, reject) =>
-    Math.random() > 0.5 ? resolve(x) : reject(x),
-  );
+const prom = (name, family) => new Promise(resolve => resolve(`Hi ${name} :: ${family} !`))
 
-l("zHI!!");
-l(pcall);
-l("::", myPromise(123).then(console.log).catch(console.error));
+{
+  l('▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁')
+  l('━━  DIRECT INVOKE  ━━')
+  const res = await Pcall(prom, 'zed', 'hoge')
+  l(res)
+  l('▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔')
+}
+
+l('░░░░░░░░░░░░░░░░░░░░░')
+
+{
+  l('▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁')
+  l('━━━━  INSTANCE  ━━━━━')
+  const pcall = new Pcall({ opt_1: true, opt_2: 123 })
+  const res = await pcall(prom, 'zed', 'hoge')
+  l(res)
+  l('▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔')
+}

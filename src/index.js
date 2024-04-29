@@ -1,26 +1,20 @@
-const warn = () =>
-  console.warn(`
-🚧 UNDER ACTIVE DEVELOPMEN
-🔴 NOT PRODUCTION READY`);
+import { onSuccess, onFailure } from './hooks.js'
 
-warn()
-
-async function pcall(fn, ...args) {
-  warn()
+async function exec(opts, fn, args) {
   try {
-    const res = await fn(...args);
-    return [true, res];
+    const res = await fn(...args)
+    onSuccess(args, res)
+    return [true, res]
   } catch (err) {
-    console.error(err);
-    return [false, err.message];
+    onFailure(args, err)
+    return [false, err.message]
   }
 }
 
-pcall.setup = (opt) => {
-  // TODO: set opt settings
-  warn()
-  console.log({ opt });
-  return pcall;
-};
+function Pcall(...opts) {
+  if (new.target) return (fn, ...args) => exec(opts, fn, args)
+  const [fn, ...args] = opts
+  return exec({ def: 'yes' }, fn, args)
+}
 
-export default pcall;
+export default Pcall

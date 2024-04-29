@@ -33,11 +33,10 @@
   "scripts": {
     "build": "npx unbuild",
     "build:stub": "npx unbuild --stub",
-    "dev": "node --watch-path=src --watch-path=test test/dev.test.js"
+    "dev": "node --watch-path=src --watch-path=test/dev.test.js test/dev.test.js"
   },
   "keywords": [
     "promise"
   ],
-  "license": "MIT",
-  "devDependencies": {}
+  "license": "MIT"
 }
