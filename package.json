@@ -33,8 +33,7 @@
   "scripts": {
     "build": "npx unbuild",
     "build:stub": "npx unbuild --stub",
-    "dev": "node --watch-path=src --watch-path=test/dev.test.js test/dev.test.js",
-    "publish": "bash .github/scripts/publish.sh"
+    "dev": "node --watch-path=src --watch-path=test/dev.test.js test/dev.test.js"
   },
   "keywords": [
     "promise"
