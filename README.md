@@ -2,7 +2,7 @@ Pcall.js
 ========
 
 <div align=center>
-  <img alt="logo-of-pcall" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/logo.png" width="50%"><br><br>
+  <img alt="logo-of-pcall" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/logo.png"><br><br>
   <h2>🦺 Minimal Async Protected SafeCalls</h2>
   <p>───────</p>
   <h3>🎌 Delegate Promise Resolutions</h3>
