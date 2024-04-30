@@ -13,7 +13,7 @@ export default async function exec(opts = {}, fn, args) {
   } finally {
     if (opts.trace) {
       opts.name = 'DEBUG::TRACE'
-      opts.message ||= 'N/A'
+      opts.message ??= 'N/A'
       Error.captureStackTrace(opts)
       void console.debug(opts.stack)
     }
