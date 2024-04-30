@@ -24,7 +24,9 @@ Features
 
 ---
 
+
 <div align=center>
+  <h2>This is the entire dist file! 🔥</h2>
   <img alt="logo-of-pcall" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/dist.png">
 </div>
 
@@ -145,6 +147,8 @@ const [ok, res] = await pcall(prom, 'zed', 'hoge')
 console.log(ok, res)
 // <true|false>,  Hi zed :: hoge
 ```
+
+### Check [test/dev.test.js](test/dev.test.js) for more usage
 
 ---
 
