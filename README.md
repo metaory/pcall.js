@@ -160,6 +160,12 @@ npm run publish
 
 ---
 
+<div align=center>
+  <img alt="logo-of-pcall" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/dist.png">
+</div>
+
+---
+
 TODO
 ----
 - [x] 🌀 Lifecycle Hooks
