@@ -6,8 +6,10 @@ const box = (ok, data) =>
     JSON.stringify(data, null, 2),
   )
 
-// Default Success Hook
 export const onSuccess = (args, res) => box(true, { args, res })
 
-// Default Failure Hook
 export const onFailure = (args, err) => box(false, { args, err })
+
+export const cleanup = args => console.log(':CLEANUP_PLACEHOLDER:', { args })
+
+export default { onSuccess, onFailure, cleanup, trace: false }

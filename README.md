@@ -8,24 +8,21 @@ PCALL.js
   <h3>Centralize Error handling, Monitoring, Notification and more</h3>
   ✴️<s>nested try...catch</s>✴️
   <p>▁▁▁▁▁▁▁▁</p>
-  <p><b>📦 zero-dependency</b>╶╴<b>🚀 zero-configuration</b>╶╴<b>⚙️ extendable</b></p>
+  <p><b>📦 zero-dependency</b>╶╴<b>〽️ minimal and elegant</b>╶╴<b>⚙️ extendable</b></p>
 </div>
-
----
-
-<div align=center>🚧 NOT PRODUCTION READY ☢️</div>
 
 ---
 
 Features
 --------
+- 〽️ **Minimal**: Obsessive Minimal Disorder
 - 📦 **Zero-dependency:** Works in Node.js (**ESM** & **CJS**) and all modern browsers
 - 🚀 **Zero-configuration:** Provides opt-in configuration for advance usage
 - ⚙️  **Extendable**: Lifecycle Hooks, Processors, Serializer, Parser
 - 🛡️ **Fault-tolerant:** Uniform and deterministic asynchronous operations
 - 👻 **Humanized API:** Simple to get started with a reasonable API
-- 🌬️ **Lightweight**: under (2 KB)
 
+---
 
 Prelude
 -------
@@ -74,9 +71,11 @@ Installation
 npm install pcall.js
 ```
 
+---
+
 Usage
 -----
-```javascript
+```js
 // ESM
 import Pcall from 'pcall.js'
 
@@ -86,24 +85,27 @@ const Pcall = require('pcall.js')
 
 ---
 
+<!-- // const prom = (...x) => new Promise((resolve, reject) => Math.random() > 0.5 ? resolve(x) : reject(x)); -->
+
 Basic Usage
 -----------
 ```javascript
 // some promise
-const prom = (...x) =>
-  new Promise((resolve, reject) =>
-    Math.random() > 0.5 ? resolve(x) : reject(x),
-  );
+const prom = (name, family) => new Promise(resolve => resolve(`Hi ${name} :: ${family} !`))
 ```
+
+---
 
 ```javascript
 import Pcall from 'pcall.js'
 
-const [ok, res] = await Pcall(prom, 'hoge', [99, 7], { xorg: 'X11' });
+const [ok, res] = await Pcall(prom, 'zed', 'hoge')
 
 console.log(ok, res)
 // <true|false>,  <...>
 ```
+
+---
 
 Advance Usage*
 -------------
@@ -113,11 +115,14 @@ import Pcall from 'pcall.js'
 
 // Create a custom pcall instance for advance usage
 const pcall = new Pcall({
-  // 🚧 runs on success, passing context and result
+  // runs on success, passing context and result
   onSuccess: (args, res) => { /* do stuff */ },
 
-  // 🚧 runs on failure, passing context and error
+  // runs on failure, passing context and error
   onFailure: (args, err) => { /* do stuff */ },
+
+  // runs when promise is settled
+  cleanup: (args) => { /* do stuff */ },
 
   // 🚧 runs before success hook, transform the success result
   successSerializer: (res) => ({ hoge: 'fuga', ...res }),
@@ -129,11 +134,13 @@ const pcall = new Pcall({
   // NOT the structure
 })
 
-const [ok, res] = await pcall(prom, 'hoge', ['fuga', 'nyoro'], { xorg: 'X11' });
+const [ok, res] = await pcall(prom, 'zed', 'hoge')
 
 console.log(ok, res)
-// <true|false>,  <...>
+// <true|false>,  Hi zed :: hoge
 ```
+
+---
 
 Development
 -----------
@@ -146,20 +153,22 @@ npm run build
 
 # build stub
 npm run build:stub
+
+# publish
+npm run publish
 ```
 
 ---
 
 TODO
 ----
-- [.] 🌀 Lifecycle Hooks
-- [.] 📦 Transformers for Success/Failure
+- [x] 🌀 Lifecycle Hooks
 - [.] 🔌 Serializer
 - [.] 🧬 Parser
 - [.] 📜 JSDoc
 - [.] 🔧 ESLint
-- [.] 📖 Docs
-- [.] ⚠️  Tests
+- [o] 📖 Docs
+- [o] ⚠️  Tests
 - [.] 💡 Examples
 
 ---

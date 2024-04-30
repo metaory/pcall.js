@@ -16,8 +16,18 @@ l('░░░░░░░░░░░░░░░░░░░░░')
 
 {
   l('▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁')
-  l('━━━━  INSTANCE  ━━━━━')
-  const pcall = new Pcall({ opt_1: true, opt_2: 123 })
+  l('━ OPT INSTANCE  ━━━━━')
+  const onSuccess = (args, res) => l('onSuccess::', { args, res })
+  const onFailure = (args, err) => l('onFailure::', { args, err })
+  const pcall = new Pcall({ onSuccess, onFailure, trace: false })
+  const res = await pcall(prom, 'zed', 'hoge')
+  l(res, 'OPT INSTANCE')
+  l('▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔')
+}
+{
+  l('▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁')
+  l('━ NOPT INSTANCE  ━━━━')
+  const pcall = new Pcall()
   const res = await pcall(prom, 'zed', 'hoge')
   l(res)
   l('▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔')
