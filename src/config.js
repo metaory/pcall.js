@@ -1,8 +1,8 @@
 const box = (ok, data) =>
   console.log(
-    `    ╭╌╌╌╌╌╌╌╌╌╮
+    `    ╭${'╌'.repeat(9)}╮
     ┊ ${ok ? 'SUCCESS' : 'FAILURE'} ┊
-    ╰╌╌╌╌╌╌╌╌╌╯\n`,
+    ╰${'╌'.repeat(9)}╯\n`,
     JSON.stringify(data, null, 2),
   )
 
