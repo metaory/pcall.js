@@ -12,8 +12,6 @@ const prom = (name, family) => new Promise(resolve => resolve(`Hi ${name} :: ${f
   l('▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔')
 }
 
-l('░░░░░░░░░░░░░░░░░░░░░')
-
 {
   l('▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁')
   l('━ OPT INSTANCE  ━━━━━')
@@ -21,9 +19,10 @@ l('░░░░░░░░░░░░░░░░░░░░░')
   const onFailure = (args, err) => l('onFailure::', { args, err })
   const pcall = new Pcall({ onSuccess, onFailure, trace: false })
   const res = await pcall(prom, 'zed', 'hoge')
-  l(res, 'OPT INSTANCE')
+  l(res)
   l('▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔')
 }
+
 {
   l('▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁')
   l('━ NOPT INSTANCE  ━━━━')

@@ -36,7 +36,31 @@
     "dev": "node --watch-path=src --watch-path=test/dev.test.js test/dev.test.js"
   },
   "keywords": [
-    "promise"
+    "async",
+    "await",
+    "bind",
+    "bundleless",
+    "cjs",
+    "es2025",
+    "esm",
+    "hybrid",
+    "lua",
+    "mediator",
+    "middleware",
+    "minimal",
+    "npm",
+    "pcall",
+    "pcall.js",
+    "promise",
+    "protected",
+    "safe",
+    "small",
+    "tiny",
+    "unbuild",
+    "wrap",
+    "wrapper",
+    "zero-dependencies",
+    "zero-dependency"
   ],
   "license": "MIT"
 }
