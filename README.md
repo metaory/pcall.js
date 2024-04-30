@@ -2,8 +2,6 @@ Pcall.js
 ========
 
 <div align=center>
-  <h1>🛟 Protected 🚦 Asynchronous 📦 Operations</h1>
-  <br>
   <img alt="logo-of-pcall" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/logo.png" width="50%"><br><br>
   <h2>🦺 Minimal Async Protected SafeCalls</h2>
   <p>───────</p>
