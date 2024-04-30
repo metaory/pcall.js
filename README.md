@@ -14,7 +14,7 @@ Pcall.js
   <p>━━━━━━━</p>
   <h3>📦 zero-dependency</<h3>
   <h5>🌐 Works in Node.js (ESM/CJS) and all modern browsers</h5>
-  <h5>〽️ Minimal Obsessive Minimal Disorder</h5>
+  <h5>〽️ Minimal Obsessive Disorder</h5>
 </div>
 
 ---
