@@ -24,6 +24,12 @@ Features
 
 ---
 
+<div align=center>
+  <img alt="logo-of-pcall" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/dist.png">
+</div>
+
+---
+
 Prelude
 -------
 You might have an entire function wrapped in a `try..catch`;
@@ -157,12 +163,6 @@ npm run build:stub
 # publish
 npm run publish
 ```
-
----
-
-<div align=center>
-  <img alt="logo-of-pcall" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/dist.png">
-</div>
 
 ---
 
