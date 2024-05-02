@@ -3,25 +3,29 @@ Pcall.js
 
 <div align=center>
   <img alt="logo-of-pcall" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/logo.png" width="50%"><br><br>
-  <h2>🦺 Minimal Async Protected SafeCalls</h2>
+  <h2>🛟 Minimal Protected Asynchronous Operations</h2>
   <p>───────</p>
   <h3>🎌 Delegate Promise Resolutions</h3>
   <h3>🧬 Lifecycle Callback Options</h3>
-  <h3>📍Concise & Convenient Signature</h3>
+  <h3>📍 Concise & Convenient Signature</h3>
   <p>───────</p>
   <h4>🛑 Avoid try/catch <s>HELL</s> 👹</h4>
   <h4>🌟 Better Visibility and Control</h4>
   <p>━━━━━━━</p>
-  <h3>📦 zero-dependency</<h3>
+  <h3>📦 Zero-Dependency</<h3>
   <h5>🌐 Works in Node.js (ESM/CJS) and all modern browsers</h5>
-  <h5>〽️ Minimal Obsessive Minimal Disorder</h5>
+  <h5>〽️ Minimal Obsessive Disorder</h5>
 </div>
 
 ---
 
 <div align=center>
-  <h2>🔥 This is the entire library 🔥</h2>
-  <img alt="logo-of-pcall" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/dist.png">
+  <h2>🔥 entire lib 🔥</h2>
+  <img alt="encoded-dist" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/encd.png">
+  <details>
+    <summary>decoded</summary>
+    <img alt="decoded-dist" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/decd.png">
+  </details>
 </div>
 
 ---
