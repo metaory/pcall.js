@@ -8,10 +8,8 @@ Pcall.js
   <h3>🎌 Delegate Promise Resolutions</h3>
   <h3>🧬 Lifecycle Callback Options</h3>
   <h3>📍 Concise & Convenient Signature</h3>
-  <p>───────</p>
   <h4>🛑 Avoid try/catch <s>HELL</s> 👹</h4>
   <h4>🌟 Better Visibility and Control</h4>
-  <p>━━━━━━━</p>
   <h3>📦 Zero-Dependency</<h3>
   <h5>🌐 Works in Node.js (ESM/CJS) and all modern browsers</h5>
   <h5>〽️ Minimal Obsessive Disorder</h5>
