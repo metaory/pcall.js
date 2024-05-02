@@ -1,8 +1,9 @@
 name: npm
 
 on:
-  release:
-    types: [created]
+  push:
+    tags:
+      - v*
 
 jobs:
   publish:
@@ -17,4 +18,9 @@ jobs:
       - run: npx unbuild
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.node_auth_token}}
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+      - uses: elgohr/Github-Release-Action@v5
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          title: ${{ github.ref }}
