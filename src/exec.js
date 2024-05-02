@@ -18,7 +18,7 @@ export default async function exec(opts = {}, fn, args) {
       void console.debug(opts.stack)
     }
     const cleanupFn = opts.cleanup ?? cleanup
-    cleanupFn[Symbol.toStringTag] === 'AsyncFunction' && console.warn('cleanup is async')
+    cleanupFn[Symbol.toStringTag] === 'AsyncFunction' && console.warn('is async')
     void sureFn(cleanupFn)(args)
   }
 }
