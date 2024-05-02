@@ -1,6 +1,6 @@
 {
   "name": "pcall.js",
-  "version": "0.3.4-0",
+  "version": "0.4.0",
   "description": "🛟 Protected Asynchronous Operations ┊ 📦 zero-dependency╶╴〽️ minimal╶╴⚙️ extendable",
   "author": "metaory <metaory@gmail.com>",
   "bugs": "https://github.com/metaory/pcall.js/issues",
