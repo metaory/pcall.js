@@ -12,10 +12,10 @@ export default async function exec(opts = {}, fn, args) {
   try {
     const res = await sureFn(fn)(...args)
     void (await sureFn(opts.onSuccess ?? onSuccess)(args, res))
-    return P.resolve([true, res])
+    return P.resolve([false, res])
   } catch (err) {
     void (await sureFn(opts.onFailure ?? onFailure)(args, err))
-    return P.resolve([false, err.message])
+    return P.resolve([true, err.message])
   } finally {
     if (opts.trace) {
       opts.name = 'PCALL::TRACE'
