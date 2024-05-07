@@ -33,7 +33,8 @@
   "scripts": {
     "build": "npx unbuild",
     "build:stub": "npx unbuild --stub",
-    "dev": "node --watch-path=src --watch-path=test/dev.test.js test/dev.test.js"
+    "dev": "node --watch-path=src --watch-path=test test/*.test.js",
+    "test": "node test/*.test.js"
   },
   "keywords": [
     "async",
@@ -59,7 +60,6 @@
     "unbuild",
     "wrap",
     "wrapper",
-    "zero-dependencies",
     "zero-dependency"
   ],
   "license": "MIT"

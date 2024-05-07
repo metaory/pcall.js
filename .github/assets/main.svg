@@ -27,15 +27,15 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#111111"
      inkscape:document-units="px"
-     inkscape:zoom="1"
-     inkscape:cx="652"
-     inkscape:cy="255.5"
+     inkscape:zoom="0.70710678"
+     inkscape:cx="591.84838"
+     inkscape:cy="325.97623"
      inkscape:window-width="2520"
      inkscape:window-height="940"
      inkscape:window-x="1080"
      inkscape:window-y="100"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g18"
+     inkscape:current-layer="g20"
      inkscape:export-bgcolor="#00000000"
      showgrid="false" />
   <defs
@@ -180,17 +180,11 @@
          y="337.06693"
          style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:134.43px;font-family:'Monaspace Krypton';-inkscape-font-specification:'Monaspace Krypton, Ultra-Bold';font-variant-ligatures:no-common-ligatures;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#4422ff;fill-opacity:1"><tspan
            style="font-size:146.667px;fill:#4422ff;fill-opacity:1"
-           id="tspan9"><tspan
-             style="fill:#3c1ae5;fill-opacity:1"
-             id="tspan6">PCA</tspan><tspan
-             style="fill:#361dc9;fill-opacity:1"
-             id="tspan2">L</tspan><tspan
-             style="fill:#371fad;fill-opacity:1"
-             id="tspan1">L</tspan></tspan><tspan
-           style="font-size:106.667px;fill:#2f1b97;fill-opacity:1"
+           id="tspan9">PCALL</tspan><tspan
+           style="font-size:106.667px;fill:#3919e6;fill-opacity:1"
            id="tspan10">.</tspan><tspan
            id="tspan12"
-           style="font-size:80px;fill:#301b98;fill-opacity:1">js</tspan></tspan></text>
+           style="font-size:80px;fill:#3919e6;fill-opacity:1">js</tspan></tspan></text>
     <text
        x="285.87189"
        y="388.43225"
@@ -201,7 +195,10 @@
        fill="#11AA22"
        style="font-size:288.131px;font-family:monospace;text-anchor:middle;display:inline;fill:#ff0055;fill-opacity:1;stroke:none;stroke-width:1;stroke-opacity:0.689712"
        inkscape:label="pcall:ic"
-       transform="scale(0.99695035,1.003059)"><tspan
+       transform="scale(0.99695035,1.003059)"
+       inkscape:export-filename="logo.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:288.131px;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ff0055;fill-opacity:1;stroke-width:1"
          id="tspan20">􀳴</tspan></text>
   </g>

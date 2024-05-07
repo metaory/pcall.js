@@ -1,24 +1,31 @@
 import { onSuccess, onFailure, cleanup } from './config.js'
 
+class P extends Promise {
+  static get [Symbol.species]() {
+    return Promise
+  }
+}
+
 const sureFn = fn => (fn instanceof Function ? fn : () => {})
 
 export default async function exec(opts = {}, fn, args) {
   try {
     const res = await sureFn(fn)(...args)
     void (await sureFn(opts.onSuccess ?? onSuccess)(args, res))
-    return [true, res]
+    return P.resolve([true, res])
   } catch (err) {
     void (await sureFn(opts.onFailure ?? onFailure)(args, err))
-    return [false, err.message]
+    return P.resolve([false, err.message])
   } finally {
     if (opts.trace) {
-      opts.name = 'DEBUG::TRACE'
+      opts.name = 'PCALL::TRACE'
       opts.message ??= 'N/A'
       Error.captureStackTrace(opts)
       void console.debug(opts.stack)
     }
     const cleanupFn = opts.cleanup ?? cleanup
-    cleanupFn[Symbol.toStringTag] === 'AsyncFunction' && console.warn('is async')
+    const cleanupTag = cleanupFn[Symbol.toStringTag]
+    cleanupTag === 'AsyncFunction' && console.warn(cleanupTag)
     void sureFn(cleanupFn)(args)
   }
 }
