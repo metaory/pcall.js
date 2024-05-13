@@ -24,11 +24,11 @@ Pcall.js
 
 <div align=center>
   <h3>basic</h3>
-  <img alt="logo-of-pcall"  src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/usage/pcall-basic.png" width="70%">
+  <img alt="logo-of-pcall"  src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/usage/pcall-basic.png" width="80%">
   <br>
   <hr>
   <h3>options</h3>
-  <img alt="logo-of-pcall"  src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/usage/pcall-options.png" width="70%">
+  <img alt="logo-of-pcall"  src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/usage/pcall-options.png" width="80%">
 </div>
 <br>
 

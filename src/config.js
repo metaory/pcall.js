@@ -8,11 +8,17 @@ const box = (data, ok = true) =>
 
 // -------------------------------------------------------
 
+export const onSuccess = (args, res) => box({ args, res }, true)
+export const onFailure = (args, err) => box({ args, err }, false)
+export const transformOnSuccess = (args, res) => ({ args, res })
+export const transformOnFailure = (args, err) => ({ args, err })
+export const cleanup = args => console.log('done with', args)
+
 export default {
-  onSuccess: (args, res) => box({ args, res }, true),
-  onFailure: (args, err) => box({ args, err }, false),
-  transformOnSuccess: (args, res) => ({ args, res }),
-  transformOnFailure: (args, err) => ({ args, err }),
-  cleanup: args => console.log('done with', args),
+  onSuccess,
+  onFailure,
+  transformOnSuccess,
+  transformOnFailure,
+  cleanup,
   trace: false,
 }
