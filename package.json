@@ -1,7 +1,7 @@
 {
   "name": "pcall.js",
-  "version": "0.4.3",
-  "description": "🛟 Protected Asynchronous Operations ┊ 📦 zero-dependency╶╴〽️ minimal╶╴⚙️ extendable",
+  "version": "0.4.4",
+  "description": "Errors as Values 🛟 ── Protected ── 📦 zero-dependency",
   "author": "metaory <metaory@gmail.com>",
   "bugs": "https://github.com/metaory/pcall.js/issues",
   "homepage": "https://github.com/metaory/pcall.js#readme",
@@ -31,10 +31,10 @@
     "LICENSE"
   ],
   "scripts": {
+    "dev": "node --test --watch",
+    "test": "node --test",
     "build": "npx unbuild",
-    "build:stub": "npx unbuild --stub",
-    "dev": "node --watch-path=src --watch-path=test test/dev.test.js",
-    "test": "node test/dev.test.js"
+    "build:stub": "npx unbuild --stub"
   },
   "keywords": [
     "async",

@@ -2,8 +2,9 @@ Pcall.js
 ========
 
 <div align=center>
-  <img alt="logo-of-pcall" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/logo.png" width="50%"><br><br>
-  <h2>🛟 Minimal Protected Asynchronous Operations</h2>
+  <img alt="logo-of-pcall" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/logo.png" width="50%">
+  <h2>Errors as Values</h2>
+  <h5>zero-dependency</h5>
 </div>
 
 ### ╶─ ╴╶ ╴╶ ╴╶ ╴╶ ╴╶ ─╴
@@ -18,15 +19,18 @@ Pcall.js
 - 〽️ Minimal Obsessive Disorder
 
 ---
+<br>
+<br>
 
 <div align=center>
-  <h2>🔥 entire lib 🔥</h2>
-  <img alt="encoded-dist" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/encd.png">
-  <details>
-    <summary>decoded</summary>
-    <img alt="decoded-dist" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/decd.png">
-  </details>
+  <h3>basic</h3>
+  <img alt="logo-of-pcall"  src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/usage/pcall-basic.png" width="70%">
+  <br>
+  <hr>
+  <h3>options</h3>
+  <img alt="logo-of-pcall"  src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/usage/pcall-options.png" width="70%">
 </div>
+<br>
 
 ---
 
@@ -72,35 +76,50 @@ const Pcall = require('pcall.js')
 Convert
 -------
 ```js
-// 🔴 BEFORE
-const user = await prisma.users.findFirst({ where: { id: User.id }}, { ctx })
 
-// ✅AFTER
+// 🔻 BEFORE
+try {
+  const res = await readFile('./package.json', { encoding: 'utf8' })
+} catch(error) {
+  console.error(error, '🔥')
+}
+
+// ─────────────────
+// 🔹AFTER
 import Pcall from 'pcall.js'
-const [err, user] = await Pcall(prisma.users.findFirst, { where: { id: User.id }}, { ctx })
+const [err, user] = await Pcall(readFile, './package.json', { encoding: 'utf8' })
 
-// ✅THROW
+// 🔸THROW
 err && throw new Error("XYZZY", { cause: err });
 ```
 
 Options
 -------
 ```js
-// ✅Options
+import { readFile } from 'node:fs/promises'
 import Pcall from 'pcall.js'
 
+const path = './package.json'
+const opts = { encoding: 'utf8' }
+
 const pcall = new Pcall({
-  onSuccess: (args, res) => { /*···*/ },
-  onFailure: (args, err) => { /*···*/ },
-  cleanup: (args) => { /*···*/ },
+  onSuccess: (args, res) => { /*·🔹·*/ },
+  onFailure: (args, err) => { /*·🔹·*/ },
+  transformOnSuccess: (args, res) => { /*·🚧·*/ },
+  transformOnFailure: (args, err) => { /*·🚧·*/ },
+  cleanup: args => { /*·🔹·*/ },
   trace: true,
-  /* 🚧 serializer/parsers */
 })
 
-const [err, user] = await pcall(prisma.users.findFirst, { where: { id: User.id }}, { ctx })
+const [err, res] = await pcall(readFile, path, opts)
+
+console.log('err', '::', err)
+console.log('res', '::', res)
 ```
 
-### 💡 Check [test/dev.test.js](https://github.com/metaory/pcall.js/blob/master/test/dev.test.js) for more examples
+### 💡 Check [test/dev.test.js]
+
+[examples/](examples/) [test/](test/) for more examples
 
 ---
 

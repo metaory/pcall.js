@@ -1,4 +1,4 @@
-const box = (ok, data) =>
+const box = (data, ok = true) =>
   console.log(
     `    ╭${'╌'.repeat(9)}╮
     ┊ ${ok ? 'SUCCESS' : 'FAILURE'} ┊
@@ -6,10 +6,13 @@ const box = (ok, data) =>
     JSON.stringify(data, null, 2)
   )
 
-export const onSuccess = (args, res) => box(true, { args, res })
+// -------------------------------------------------------
 
-export const onFailure = (args, err) => box(false, { args, err })
-
-export const cleanup = args => console.log(':PLACEHOLDER:', { args })
-
-export default { onSuccess, onFailure, cleanup, trace: false }
+export default {
+  onSuccess: (args, res) => box({ args, res }, true),
+  onFailure: (args, err) => box({ args, err }, false),
+  transformOnSuccess: (args, res) => ({ args, res }),
+  transformOnFailure: (args, err) => ({ args, err }),
+  cleanup: args => console.log('done with', args),
+  trace: false,
+}
