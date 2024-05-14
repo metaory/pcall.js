@@ -5,7 +5,6 @@ logs
 
 node_modules/
 jspm_packages/
-dist/
 .xev/
 
 

@@ -4,7 +4,6 @@ import { test } from 'node:test'
 import { strictEqual } from 'node:assert'
 
 import Pcall from '../src/index.js'
-import { pline } from '../src/config.js'
 
 const { log } = console
 
@@ -22,7 +21,6 @@ test('ASYNC INSTANCE OPT', async t => {
     console.debug(':Pcall:[RES]:<<', res, '>>')
     console.info('\x1b[35m', t.name)
     strictEqual(err, false)
-    pline('.')
   })
 
   await t.test('INSTANCE OPT:transformOnSuccess on existing fileRead', async () => {
@@ -38,7 +36,6 @@ test('ASYNC INSTANCE OPT', async t => {
     console.debug(':Pcall:[RES]:<<', res, '>>')
     console.debug(':Pcall:[JSN]:<<', res.endOfLine, '>>')
     console.info('\x1b[35m', t.name)
-    pline('.')
     strictEqual(err, false)
     // strictEqual(typeof res, 'object')
   })
@@ -56,7 +53,6 @@ test('ASYNC INSTANCE OPT', async t => {
     console.debug(':Pcall:[RES]:<<', res, '>>')
     console.info('\x1b[35m', t.name)
     strictEqual(err, true)
-    pline('.')
   })
 })
 

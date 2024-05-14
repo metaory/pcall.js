@@ -4,7 +4,6 @@ import { test } from 'node:test'
 import { strictEqual } from 'node:assert'
 
 import Pcall from '../src/index.js'
-import { pline } from '../src/config.js'
 
 test('ASYNC INSTANCE NO-OPT', async t => {
   await t.test('INSTANCE resolve NON-existing fileRead', async () => {
@@ -16,7 +15,6 @@ test('ASYNC INSTANCE NO-OPT', async t => {
     console.error(':Pcall:[ERR]:<<', err, '>>')
     console.debug(':Pcall:[RES]:<<', res, '>>')
     console.info('\x1b[35m', t.name)
-    pline('.')
     strictEqual(err, true)
   })
 
@@ -29,7 +27,6 @@ test('ASYNC INSTANCE NO-OPT', async t => {
     console.error(':Pcall:[ERR]:<<', err, '>>')
     console.debug(':Pcall:[RES]:<<', res, '>>')
     console.info('\x1b[35m', t.name)
-    pline('.')
     strictEqual(err, false)
   })
 })
@@ -43,7 +40,6 @@ test('ASYNC CLASS NO-OPT', async t => {
     console.error(':Pcall:[ERR]:<<', err, '>>')
     console.debug(':Pcall:[RES]:<<', res, '>>')
     console.info('\x1b[35m', t.name)
-    pline('.')
     strictEqual(err, true)
   })
 
@@ -55,7 +51,6 @@ test('ASYNC CLASS NO-OPT', async t => {
     console.error(':Pcall:[ERR]:<<', err, '>>')
     console.debug(':Pcall:[RES]:<<', res, '>>')
     console.info('\x1b[35m', t.name)
-    pline('.')
     strictEqual(err, false)
   })
 })
