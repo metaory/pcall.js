@@ -1,6 +1,6 @@
 {
   "name": "pcall.js",
-  "version": "0.4.5-1",
+  "version": "0.4.5-2",
   "description": "Errors as Values 🛟 ── Protected ── 📦 zero-dependency",
   "author": "metaory <metaory@gmail.com>",
   "bugs": "https://github.com/metaory/pcall.js/issues",
