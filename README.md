@@ -5,9 +5,10 @@ Pcall.js
   <img alt="logo-of-pcall" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/logo.png" width="50%">
   <h2>Errors as Values</h2>
   <h5>zero-dependency</h5>
+  ╶─╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶─╴
 </div>
 
-### ╶─ ╴╶ ╴╶ ╴╶ ╴╶ ╴╶ ─╴
+
 
 - 🎌 Delegate Promise Resolutions
 - 🧬 Lifecycle Callback Options
@@ -23,12 +24,12 @@ Pcall.js
 <br>
 
 <div align=center>
-  <h3>basic</h3>
-  <img alt="logo-of-pcall"  src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/usage/pcall-basic.png" width="80%">
+  <h3>simple</h3>
+  <img alt="pcall-simple-usage" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/simple-usage.png" width="90%">
   <br>
   <hr>
   <h3>options</h3>
-  <img alt="logo-of-pcall"  src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/usage/pcall-options.png" width="80%">
+  <img alt="pcall-option-usage" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/option-usage.png" width="90%">
 </div>
 <br>
 
@@ -105,9 +106,9 @@ const opts = { encoding: 'utf8' }
 const pcall = new Pcall({
   onSuccess: (args, res) => { /*·🔹·*/ },
   onFailure: (args, err) => { /*·🔹·*/ },
-  transformOnSuccess: (args, res) => { /*·🚧·*/ },
-  transformOnFailure: (args, err) => { /*·🚧·*/ },
-  cleanup: args => { /*·🔹·*/ },
+  transformOnSuccess: (args, res) => { /*·🔹·*/ },
+  transformOnFailure: (args, err) => { /*·🔹·*/ },
+  cleanup: (err, res, args) => { /*·🔹·*/ },
   trace: true,
 })
 
@@ -117,9 +118,32 @@ console.log('err', '::', err)
 console.log('res', '::', res)
 ```
 
-### 💡 Check [test/dev.test.js]
+Example
+-------
 
-[examples/](examples/) [test/](test/) for more examples
+```js
+import { readFile } from 'node:fs/promises'
+import Pcall from 'pcall.js'
+
+const path = './test/pcall.test.json'
+const opts = { encoding: 'utf8' }
+
+const pcall = new Pcall({
+  onSuccess: (args, res) => log('@:SUCCESS', { args, res }),
+  onFailure: (args, err) => log('@:FAILURE', { args, err }),
+  transformOnSuccess: (args, res) => JSON.parse(res),
+  transformOnFailure: (args, cause) => new Error('BAD', { cause }),
+  cleanup: (err, res, args) => log('@CLEANUP', { err, res, args }),
+  trace: true,
+})
+
+const [err, res] = await pcall(readFile, path, opts)
+
+console.error(':Pcall:[ERR]:<<', err, '>>')
+console.debug(':Pcall:[RES]:<<', res, '>>')
+```
+
+#### 💡 Check [test/pcall.canary.js]
 
 ---
 

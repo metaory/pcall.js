@@ -1,7 +1,7 @@
-import defaultConfig from './config.js'
+import config from './config.js'
 import exec from './exec.js'
 
-export default function Pcall(...opts) {
-  if (new.target) return (f, ...a) => exec(opts.at(0), f, a)
-  return exec(defaultConfig, opts.at(0), opts.slice(1))
+export default function Pcall(...o) {
+  if (new.target) return (f, ...a) => exec(o.at(0), f, a)
+  return exec(config, o.at(0), o.slice(1))
 }

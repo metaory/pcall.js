@@ -1,4 +1,4 @@
-import { onSuccess, onFailure, cleanup } from './config.js'
+import config from './config.js'
 
 class P extends Promise {
   static get [Symbol.species]() {
@@ -6,26 +6,28 @@ class P extends Promise {
   }
 }
 
-const sureFn = fn => (fn instanceof Function ? fn : () => {})
-
-export default async function exec(opts = {}, fn, args) {
+const settle = async (fn, ...args) => {
   try {
-    const res = await sureFn(fn)(...args)
-    void (await sureFn(opts.onSuccess ?? onSuccess)(args, res))
+    return [false, await fn(...args)]
+  } catch (error) {
+    return [true, error]
+  }
+}
+
+export default async function exec(opt, fn, args) {
+  const opts = { ...config, ...opt }
+  try {
+    const [err, raw] = await settle(fn, ...args)
+    const res = opts.transformOnSuccess(args, raw)
+    if (err) throw new Error(raw?.message, { cause: raw })
+    void (await settle(opts.onSuccess, args, res))
     return P.resolve([false, res])
-  } catch (err) {
-    void (await sureFn(opts.onFailure ?? onFailure)(args, err))
-    return P.resolve([true, err.message])
+  } catch (error) {
+    const res = opts.transformOnFailure(error, args)
+    void (await settle(opts.onFailure, args, res))
+    return P.resolve([true, res])
   } finally {
-    if (opts.trace) {
-      opts.name = 'PCALL::TRACE'
-      opts.message ??= 'N/A'
-      Error.captureStackTrace(opts)
-      void console.debug(opts.stack)
-    }
-    const cleanupFn = opts.cleanup ?? cleanup
-    const cleanupTag = cleanupFn[Symbol.toStringTag]
-    cleanupTag === 'AsyncFunction' && console.warn(cleanupTag)
-    void sureFn(cleanupFn)(args)
+    opts.trace && opts.onTrace(opts)
+    void opts.cleanup(opts, fn, args)
   }
 }

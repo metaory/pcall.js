@@ -11,6 +11,12 @@
   "engines": {
     "node": ">=20"
   },
+  "scripts": {
+    "dev": "node --test --watch",
+    "test": "node --test --test-concurrency 4",
+    "build": "npx unbuild",
+    "build:stub": "npx unbuild --stub"
+  },
   "exports": {
     ".": {
       "import": {
@@ -30,12 +36,6 @@
     "dist",
     "LICENSE"
   ],
-  "scripts": {
-    "dev": "node --test --watch",
-    "test": "node --test",
-    "build": "npx unbuild",
-    "build:stub": "npx unbuild --stub"
-  },
   "keywords": [
     "async",
     "await",
