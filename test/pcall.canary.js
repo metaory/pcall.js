@@ -17,7 +17,7 @@ test('async option instance call', async t => {
       onFailure: (args, err) => log('@:FAILURE', { args, err }),
       transformOnSuccess: (args, res) => JSON.parse(res),
       transformOnFailure: (args, cause) => new Error('BAD', { cause }),
-      cleanup: (err, res, args) => log('@CLEANUP', { err, res, args }),
+      cleanup: opts => log('@CLEANUP', { opts }),
       trace: true,
     })
 

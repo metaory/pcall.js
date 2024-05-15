@@ -113,7 +113,7 @@ const pcall = new Pcall({
   onFailure: (args, err) => { /*·🔹·*/ },
   transformOnSuccess: (args, res) => { /*·🔹·*/ },
   transformOnFailure: (args, err) => { /*·🔹·*/ },
-  cleanup: (err, res, args) => { /*·🔹·*/ },
+  cleanup: (opts) => { /*·🔹·*/ },
   happy: false, // true will only return result
   trace: true,
 })
@@ -139,7 +139,7 @@ const pcall = new Pcall({
   onFailure: (args, err) => log('@:FAILURE', { args, err }),
   transformOnSuccess: (args, res) => JSON.parse(res),
   transformOnFailure: (args, cause) => new Error('BAD', { cause }),
-  cleanup: (err, res, args) => log('@CLEANUP', { err, res, args }),
+  cleanup: (opts) => log('@CLEANUP', { opts }),
   trace: true,
 })
 

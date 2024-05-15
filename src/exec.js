@@ -35,6 +35,6 @@ export default async function exec(opt, fn, args) {
     return P.resolve(opts.happy ? res : [true, res])
   } finally {
     opts.trace && opts.onTrace(opts)
-    void opts.cleanup(opts, fn, args)
+    void opts.cleanup(opts)
   }
 }

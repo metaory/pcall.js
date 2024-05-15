@@ -14,8 +14,8 @@ export const onSuccess = (args, res) => box({ res, args }, true)
 export const onFailure = (args, err) => box({ err, args }, false)
 export const transformOnSuccess = (args, res) => res
 export const transformOnFailure = (args, res) => res
-export const cleanup = (err, res, args) => log({ err, res, args })
-export const onTrace = opts => {
+export const cleanup = opts => log({ opts })
+export const onTrace = (opts = {}) => {
   opts.name = 'PCALL::TRACE'
   opts.message ??= 'N/A'
   Error.captureStackTrace(opts)
