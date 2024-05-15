@@ -15,7 +15,14 @@ const settle = async (fn, ...args) => {
 }
 
 export default async function exec(opt, fn, args) {
+  if (typeof fn !== 'function') {
+    if (typeof opt.fn === 'function') {
+      args.push(fn)
+      fn = opt.fn
+    } else throw new Error('No function passed')
+  }
   const opts = { ...config, ...opt }
+
   try {
     const [err, raw] = await settle(fn, ...args)
     const res = opts.transformOnSuccess(args, raw)
@@ -23,7 +30,7 @@ export default async function exec(opt, fn, args) {
     void (await settle(opts.onSuccess, args, res))
     return P.resolve([false, res])
   } catch (error) {
-    const res = opts.transformOnFailure(error, args)
+    const res = opts.transformOnFailure(args, error)
     void (await settle(opts.onFailure, args, res))
     return P.resolve([true, res])
   } finally {

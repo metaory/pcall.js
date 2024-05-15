@@ -11,15 +11,18 @@ test('ASYNC INSTANCE OPT', async t => {
   await t.test('INSTANCE OPT:onSuccess, onFailure on NON-existing fileRead', async () => {
     const path = './test/pcall.test.json'
     const opts = { encoding: 'utf8' }
+
     const pcall = new Pcall({
       onSuccess: (args, res) => log('@:SUCCESS', { args, res }),
       onFailure: (args, err) => log('@:FAILURE', { args, err }),
     })
+
     const [err, res] = await pcall(readFile, path, opts)
 
-    console.error(':Pcall:[ERR]:<<', err, '>>')
-    console.debug(':Pcall:[RES]:<<', res, '>>')
-    console.info('\x1b[35m', t.name)
+    log(':Pcall:[ERR]:<<', err, '>>')
+    log(':Pcall:[RES]:<<', res, '>>')
+    log('\x1b[35m', t.name)
+
     strictEqual(err, false)
   })
 
