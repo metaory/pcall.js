@@ -114,6 +114,7 @@ const pcall = new Pcall({
   transformOnSuccess: (args, res) => { /*·🔹·*/ },
   transformOnFailure: (args, err) => { /*·🔹·*/ },
   cleanup: (err, res, args) => { /*·🔹·*/ },
+  happy: false, // true will only return result
   trace: true,
 })
 
@@ -146,6 +147,45 @@ const [err, res] = await pcall(readFile, path, opts)
 
 console.error(':Pcall:[ERR]:<<', err, '>>')
 console.debug(':Pcall:[RES]:<<', res, '>>')
+```
+
+Example Custom
+--------------
+
+```js
+import { readFile } from 'node:fs/promises'
+
+const path = './test/pcall.test.json'
+const opts = { encoding: 'utf8' }
+
+const pread = new Pcall({
+  transformOnSuccess: (args, res) => JSON.parse(res),
+  fn: readFile,
+})
+
+const [err, res] = await pread(path, opts)
+
+console.error(':Pcall:[ERR]:<<', err, '>>')
+console.debug(':Pcall:[RES]:<<', res, '>>')
+```
+
+Example Happy
+-------------
+
+```js
+import { readFile } from 'node:fs/promises'
+
+const path = './test/pcall.test.json'
+const opts = { encoding: 'utf8' }
+
+const pcall = new Pcall({
+  transformOnSuccess: (args, res) => JSON.parse(res),
+  happy: true,
+})
+
+const res = await pcall(readFile, path, opts)
+
+console.log(res.hogo) // fuga
 ```
 
 #### 💡 Check [test/pcall.canary.js]

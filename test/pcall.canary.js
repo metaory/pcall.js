@@ -27,5 +27,6 @@ test('async option instance call', async t => {
     log(':Pcall:[RES]:<<', res, '>>')
     log('\x1b[35m', t.name)
     strictEqual(err, false)
+    strictEqual(res.hogo, 'fuga')
   })
 })

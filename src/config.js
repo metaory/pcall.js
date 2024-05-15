@@ -32,4 +32,5 @@ export default {
   cleanup,
   onTrace,
   trace: false,
+  happy: false,
 }
