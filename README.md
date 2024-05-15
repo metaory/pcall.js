@@ -33,7 +33,7 @@ Pcall.js
   <br>
   <hr>
   <h3>custom</h3>
-  <img alt="pcall-option-usage" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/custom-usage.png" width="95%">
+  <img alt="pcall-custom-usage" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/custom-usage.png" width="95%">
   <p>create new safe utilities with shared side-effect behavior</p>
 </div>
 <br>
