@@ -9,13 +9,13 @@ Pcall.js
 </div>
 
 
-- 🎌 Delegate Promise Resolutions
-- 🧬 Lifecycle Callback Options
-- 📍 Concise and Convenient Signature
-- 📦 Zero-Dependency
-- 🛑 Avoid try/catch ~~HELL~ 👹
+- 🎌 Group Error handling
+- 🧬 Lifecycle Hooks
+- 📍 Concise Signature
+- 📦 Zero Dependency
+- 🛑 try/catch ~~HELL~ 👹
 - 🌟 Better Visibility and Control
-- 🌐 Works in Node.js (ESM/CJS) and all modern browsers
+- 🌐 Works in ESM & CJS
 - 〽️ Minimal Obsessive Disorder
 
 ---
@@ -41,7 +41,14 @@ Pcall.js
 
 Inspiration
 -----------
-Lua approach to error handling is simple yet powerful. ^[Lua:5.4](https://www.lua.org/manual/5.4/manual.html#pdf-pcall) ^[Lua:8.4](https://www.lua.org/pil/8.4.html), ^[Lua:8.5](https://www.lua.org/pil/8.5.html)
+In Lua Errors are detected and explained in terms of Lua. ^[Lua:5.4](https://www.lua.org/manual/5.4/manual.html#pdf-pcall) ^[Lua:8.4](https://www.lua.org/pil/8.4.html), ^[Lua:8.5](https://www.lua.org/pil/8.5.html)
+
+You can contrast that with C, where the behavior of many wrong programs can only be explained
+in terms of the underling hardware and error positions are given as a program counter
+
+Activities start from a call by the application, usually asking to run a chunk.
+
+If there is any error, this call returns an error code and the application can take appropriate actions
 
 🔹 `pcall.js` is heavily inspired by Lua `pcall` **with superpowers** 🦄!
 
@@ -52,15 +59,20 @@ SYNOPSIS
 `pcall({f}, {arg1}, {...})`
 
 `pcall()` Calls function `{f}` with the given arguments in **protected mode**.
+
 This means that any error inside `{f}` is not propagated;
 
 Instead, `pcall` catches the error and returns a tuple.
 
-Its first element is the status code (a boolean),
-which is true if the call succeeds without errors.
-And all results from the call, on second element; `[true, {res}]`
+Its first element is the **error code** ~~status code~~ (a boolean),
 
-In case of any error, pcall returns false plus the error message; `[false, {err}]`
+Which is `false` ~~`true`~~ if the call succeeds without errors.
+
+And all results from the call, on second element; `[false, {res}]`
+
+In case of any error,
+
+Pcall returns `true` ~~`false`~~ plus the error message; `[true, {err}]`
 
 ---
 
@@ -93,7 +105,7 @@ try {
 // ─────────────────
 // 🔹AFTER
 import Pcall from 'pcall.js'
-const [err, user] = await Pcall(readFile, './package.json', { encoding: 'utf8' })
+const [err, res] = await Pcall(readFile, './package.json', { encoding: 'utf8' })
 
 // 🔸THROW
 err && throw new Error("XYZZY", { cause: err });

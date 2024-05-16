@@ -1,6 +1,12 @@
 #!/bin/sh
 
-URL='https://ray.so/#language=javascript&theme=breeze&padding=128&title=pcall.js'
+PADDING=128
+THEME=breeze
+TITLE='pcall.js'
+LANG='javascript'
+
+URL="https://ray.so/#language=${LANG}&theme=${THEME}&padding=${PADDING}&title=${TITLE}"
+
 # CMD='chromium'
 find examples -type f -name 'simple.js' -exec base64 -w0 {} \; | xargs -0 printf "--app='${URL}&code=%s'" | xargs chromium
 
