@@ -9,10 +9,10 @@ Pcall.js
 </div>
 
 
-- 🎌 Group Error handling
 - 🧬 Lifecycle Hooks
-- 📍 Concise Signature
 - 📦 Zero Dependency
+- 📍 Concise Signature
+- 🎌 Group Side Effects
 - 🛑 try/catch ~~HELL~ 👹
 - 🌟 Better Visibility and Control
 - 🌐 Works in ESM & CJS
@@ -24,15 +24,15 @@ Pcall.js
 
 <div align=center>
   <h3>use basic</h3>
-  <img alt="pcall_use-static" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/use-basic.png" width="95%">
+  <img alt="pcall_use-static" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/use-basic.png">
   <br>
   <hr>
   <h3>use options</h3>
-  <img alt="pcall_use-options" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/use-options.png" width="95%">
+  <img alt="pcall_use-options" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/use-options.png">
   <br>
   <hr>
   <h3>use default</h3>
-  <img alt="pcall_use-default" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/use-default.png" width="95%">
+  <img alt="pcall_use-default" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/use-default.png">
   <p>create new safe utilities with shared side-effect behavior</p>
 </div>
 <br>
