@@ -23,16 +23,16 @@ Pcall.js
 <br>
 
 <div align=center>
-  <h3>simple</h3>
-  <img alt="pcall-simple-usage" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/simple-usage.png" width="95%">
+  <h3>use basic</h3>
+  <img alt="pcall_use-static" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/use-basic.png" width="95%">
   <br>
   <hr>
-  <h3>options</h3>
-  <img alt="pcall-option-usage" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/option-usage.png" width="95%">
+  <h3>use options</h3>
+  <img alt="pcall_use-options" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/use-options.png" width="95%">
   <br>
   <hr>
-  <h3>custom</h3>
-  <img alt="pcall-custom-usage" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/custom-usage.png" width="95%">
+  <h3>use default</h3>
+  <img alt="pcall_use-default" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/use-default.png" width="95%">
   <p>create new safe utilities with shared side-effect behavior</p>
 </div>
 <br>
