@@ -15,12 +15,14 @@ const settle = async (fn, ...args) => {
 }
 
 export default async function exec(opt, fn, args) {
+  if (Array.isArray(opt.args)) args.unshift(...opt.args)
   if (typeof fn !== 'function') {
     if (typeof opt.fn === 'function') {
       args.unshift(fn)
       fn = opt.fn
     } else throw new Error('No function passed')
   }
+
   const opts = { ...config, ...opt }
 
   try {
@@ -28,13 +30,12 @@ export default async function exec(opt, fn, args) {
     const res = opts.transformOnSuccess(args, raw)
     if (err) throw new Error(raw?.message, { cause: raw })
     void (await settle(opts.onSuccess, args, res))
-    return P.resolve(opts.happy ? res : [false, res])
+    return P.resolve(opts.noError ? res : [false, res])
   } catch (error) {
     const res = opts.transformOnFailure(args, error)
     void (await settle(opts.onFailure, args, res))
-    return P.resolve(opts.happy ? res : [true, res])
+    return P.resolve(opts.noError ? res : [true, res])
   } finally {
-    opts.trace && opts.onTrace(opts)
-    void opts.cleanup(opts)
+    void opts?.cleanup(opts)
   }
 }

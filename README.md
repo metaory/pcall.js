@@ -9,7 +9,6 @@ Pcall.js
 </div>
 
 
-
 - 🎌 Delegate Promise Resolutions
 - 🧬 Lifecycle Callback Options
 - 📍 Concise and Convenient Signature
@@ -82,6 +81,7 @@ const Pcall = require('pcall.js')
 Convert
 -------
 ```js
+import { readFile } from 'node:fs/promises'
 
 // 🔻 BEFORE
 try {
@@ -97,7 +97,28 @@ const [err, user] = await Pcall(readFile, './package.json', { encoding: 'utf8' }
 
 // 🔸THROW
 err && throw new Error("XYZZY", { cause: err });
+
+// ─────────────────
+// 🔸 NO @ITERATOR
+import Pcall from 'pcall.js'
+const pcall = new Pcall({ noError: true })
+const res = await pcall(readFile, './package.json', { encoding: 'utf8' })
+
+// ─────────────────
+// 🔸 MOCK
+const readJson = new Pcall({
+  fn: readFile,
+  noError: true,
+  args: [{ encoding: 'utf8' }],
+  transformOnSuccess: (args, res) => JSON.parse(res),
+  transformOnFailure: (args, { name, message }) => ({ name, message }),
+})
+const path = 'test/sample-good.json'
+
+const res = await readJson(path)
+log(res.hogo) // fuga
 ```
+
 
 Options
 -------
@@ -105,90 +126,23 @@ Options
 import { readFile } from 'node:fs/promises'
 import Pcall from 'pcall.js'
 
+const pcall = new Pcall({
+  onSuccess: (args, res) => log({ res, args }, true),
+  onFailure: (args, err) => log({ err, args }, false),
+  transformOnSuccess: (args, res) => res,
+  transformOnFailure: (args, res) => res,
+  cleanup: () => {},
+  noError: false,
+  noTrace: false,
+})
+
 const path = './package.json'
 const opts = { encoding: 'utf8' }
 
-const pcall = new Pcall({
-  onSuccess: (args, res) => { /*·🔹·*/ },
-  onFailure: (args, err) => { /*·🔹·*/ },
-  transformOnSuccess: (args, res) => { /*·🔹·*/ },
-  transformOnFailure: (args, err) => { /*·🔹·*/ },
-  cleanup: (opts) => { /*·🔹·*/ },
-  happy: false, // true will only return result
-  trace: true,
-})
-
 const [err, res] = await pcall(readFile, path, opts)
-
-console.log('err', '::', err)
-console.log('res', '::', res)
 ```
 
-Example
--------
-
-```js
-import { readFile } from 'node:fs/promises'
-import Pcall from 'pcall.js'
-
-const path = './test/pcall.test.json'
-const opts = { encoding: 'utf8' }
-
-const pcall = new Pcall({
-  onSuccess: (args, res) => log('@:SUCCESS', { args, res }),
-  onFailure: (args, err) => log('@:FAILURE', { args, err }),
-  transformOnSuccess: (args, res) => JSON.parse(res),
-  transformOnFailure: (args, cause) => new Error('BAD', { cause }),
-  cleanup: (opts) => log('@CLEANUP', { opts }),
-  trace: true,
-})
-
-const [err, res] = await pcall(readFile, path, opts)
-
-console.error(':Pcall:[ERR]:<<', err, '>>')
-console.debug(':Pcall:[RES]:<<', res, '>>')
-```
-
-Example Custom
---------------
-
-```js
-import { readFile } from 'node:fs/promises'
-
-const path = './test/pcall.test.json'
-const opts = { encoding: 'utf8' }
-
-const pread = new Pcall({
-  transformOnSuccess: (args, res) => JSON.parse(res),
-  fn: readFile,
-})
-
-const [err, res] = await pread(path, opts)
-
-console.error(':Pcall:[ERR]:<<', err, '>>')
-console.debug(':Pcall:[RES]:<<', res, '>>')
-```
-
-Example Happy
--------------
-
-```js
-import { readFile } from 'node:fs/promises'
-
-const path = './test/pcall.test.json'
-const opts = { encoding: 'utf8' }
-
-const pcall = new Pcall({
-  transformOnSuccess: (args, res) => JSON.parse(res),
-  happy: true,
-})
-
-const res = await pcall(readFile, path, opts)
-
-console.log(res.hogo) // fuga
-```
-
-#### 💡 Check [test/pcall.canary.js]
+#### 💡 Check [test/](test/) files for more examples
 
 ---
 

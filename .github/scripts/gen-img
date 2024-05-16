@@ -1,0 +1,10 @@
+#!/bin/sh
+
+URL='https://ray.so/#language=javascript&theme=breeze&padding=128&title=pcall.js'
+# CMD='chromium'
+find examples -type f -name 'simple.js' -exec base64 -w0 {} \; | xargs -0 printf "--app='${URL}&code=%s'" | xargs chromium
+
+#xsel --input --clipboard --trim
+# while read -r L; do
+#   echo "L $L"
+# done < <(find examples -type f -name '*simple.js')

@@ -17,6 +17,7 @@
     "watch:test": "node --test --watch",
     "watch:build": "watchexec -w src -d 3000 npm run build",
     "build": "npx unbuild",
+    "build:demo": "sh .github/scripts/gen-img",
     "build:stub": "npx unbuild --stub"
   },
   "exports": {
