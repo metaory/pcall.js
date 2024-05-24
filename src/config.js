@@ -4,8 +4,7 @@ const box = (data, ok = true) =>
   log(
     `  ╭${'╌'.repeat(11)}╮
   ┊ ${ok ? 'onSuccess' : 'onFailure'} ┊
-  ╰${'╌'.repeat(11)}╯\n`,
-    JSON.stringify(data, null, 2)
+  ╰${'╌'.repeat(11)}╯\n`
   )
 
 // -------------------------------------------------------
