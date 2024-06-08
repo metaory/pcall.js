@@ -1,13 +1,11 @@
-Pcall.js
-========
-
 <div align=center>
-  <img alt="logo-of-pcall" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/logo.png" width="50%">
+  <h1>Pcall.js</h1>
+  <img alt="logo-of-pcall" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/icon.png" width="50%">
   <h2>Errors as Values</h2>
   <h5>unwrap/expand to array-like safe tuple results</h5>
-  ╶─╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶─╴
 </div>
 
+  ╶─╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶─╴
 
 - 🧬 Lifecycle Hooks
 - 📦 Zero Dependency
@@ -20,26 +18,12 @@ Pcall.js
 
 ---
 
-<br>
-<br>
-
 <div align=center>
   <h3>use basic</h3>
-  <img alt="pcall_use-static" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/use-basic.png">
-  <a href="https://github.com/metaory/pcall.js/blob/master/.github/assets/use-basic.js">use-basic.js</a>
-  <br>
-  <hr>
-  <h3>use default</h3>
-  <img alt="pcall_use-default" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/use-default.png">
-  <a href="https://github.com/metaory/pcall.js/blob/master/.github/assets/use-default.js">use-default.js</a>
-  <hr>
-  <h3>use options</h3>
-  <img alt="pcall_use-options" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/use-options.png">
-  <a href="https://github.com/metaory/pcall.js/blob/master/.github/assets/use-options.js">use-options.js</a>
-  <p>create new safe utilities with shared side-effect behavior</p>
-  <br>
+  <img alt="pcall_use-static" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/pcall-usage.png">
+  <a
+  href="https://github.com/metaory/pcall.js/blob/master/.github/assets/pcall-usage.js">pcall-usage.js</a>
 </div>
-<br>
 
 ---
 
