@@ -1,24 +1,24 @@
 <div align="center">
   <h1>PCALL<sub>.js</sub></h1>
   <img alt="logo-of-pcall" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/icon.png" width="168px">
-  <h2>Errors as Values</h2>
-  <h5>unwrap/expand to array-like safe tuple results</h5>
+  <h2>Result/Monad like tuples for JS</h2>
+  <h4>unwrap promises safely with minimum footprint</h4>
     ╶─╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶─╴
   <br>
   <p>🧬 Lifecycle Hooks</p>
   <p>📦 Zero Dependency</p>
   <p>📍 Concise Signature</p>
   <p>🎌 Group Side Effects</p>
-  <p>🛑 try/catch ~~HELL~ 👹</p>
+  <p>🛑 <s>try/catch</s> HELL 👹</p>
   <p>🌟 Better Visibility and Control</p>
   <p>🌐 Works in ESM & CJS</p>
-  <p>〽️ Minimal Obsessive Disorder</p>
+  <p>◽ Minimal Obsessive Disorder</p>
 </div>
 
 ---
 
 <div align="center">
-  <img alt="pcall_usage" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/usage.png" width="80%">
+  <img alt="pcall_usage" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/usage.png">
   <p><a href="https://github.com/metaory/pcall.js/blob/master/.github/assets/usage.js">usage.js</a></p>
 </div>
 
@@ -30,7 +30,7 @@ Inspiration
 
 🔹 Lua `pcall` `status, res`
 
-🔹 Elixir Error Monad `{:error, reason} | {:ok, value}`
+🔹 Elixir/Erlang Result Monad `{:ok/:error, reason/value}`
 
 🔹 Rust `Result<T, E>`
 
