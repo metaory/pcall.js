@@ -25,17 +25,17 @@ Pcall.js
 
 <div align=center>
   <h3>use basic</h3>
-  <a href="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/use-basic.js">use-basic.js</a>
   <img alt="pcall_use-static" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/use-basic.png">
+  <a href="https://github.com/metaory/pcall.js/blob/master/.github/assets/use-basic.js">use-basic.js</a>
   <br>
   <hr>
   <h3>use default</h3>
-  <a href="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/use-default.js">use-default.js</a>
   <img alt="pcall_use-default" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/use-default.png">
+  <a href="https://github.com/metaory/pcall.js/blob/master/.github/assets/use-default.js">use-default.js</a>
   <hr>
   <h3>use options</h3>
-  <a href="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/use-options.js">use-options.js</a>
   <img alt="pcall_use-options" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/use-options.png">
+  <a href="https://github.com/metaory/pcall.js/blob/master/.github/assets/use-options.js">use-options.js</a>
   <p>create new safe utilities with shared side-effect behavior</p>
   <br>
 </div>
