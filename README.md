@@ -1,26 +1,25 @@
-<div align=center>
-  <h1>Pcall.js</h1>
-  <img alt="logo-of-pcall" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/icon.png" width="50%">
+<div align="center">
+  <h1>PCALL<sub>.js</sub></h1>
+  <img alt="logo-of-pcall" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/icon.png" width="168px">
   <h2>Errors as Values</h2>
+    ╶─╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶─╴
   <h5>unwrap/expand to array-like safe tuple results</h5>
+    ╶─╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶─╴
+  <br>
+  <p> 🧬 Lifecycle Hooks</p>
+  <p> 📦 Zero Dependency</p>
+  <p> 📍 Concise Signature</p>
+  <p> 🎌 Group Side Effects</p>
+  <p> 🛑 try/catch ~~HELL~ 👹</p>
+  <p> 🌟 Better Visibility and Control</p>
+  <p> 🌐 Works in ESM & CJS</p>
+  <p> 〽️ Minimal Obsessive Disorder</p>
 </div>
-
-  ╶─╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶─╴
-
-- 🧬 Lifecycle Hooks
-- 📦 Zero Dependency
-- 📍 Concise Signature
-- 🎌 Group Side Effects
-- 🛑 try/catch ~~HELL~ 👹
-- 🌟 Better Visibility and Control
-- 🌐 Works in ESM & CJS
-- 〽️ Minimal Obsessive Disorder
 
 ---
 
-<div align=center>
-  <h3>use basic</h3>
-  <img alt="pcall_use-static" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/usage.png">
+<div align="center">
+  <img alt="pcall_usage" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/usage.png" width="80%">
   <a href="https://github.com/metaory/pcall.js/blob/master/.github/assets/usage.js">usage.js</a>
 </div>
 
