@@ -20,23 +20,33 @@
 
 <div align="center">
   <img alt="pcall_usage" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/usage.png" width="80%">
-  <a href="https://github.com/metaory/pcall.js/blob/master/.github/assets/usage.js">usage.js</a>
+  <p><a href="https://github.com/metaory/pcall.js/blob/master/.github/assets/usage.js">usage.js</a></p>
 </div>
 
 ---
 
 Inspiration
 -----------
-🔹 `pcall.js` is heavily inspired by Lua `pcall` `status, res`, Elixir Error Monad `{:error, reason} | {:ok, value}`, Go `[]error`, Rust `Result<T, E>` **with superpowers** 🦄!
+ `pcall.js` is heavily inspired by
 
-In Lua Errors are detected and explained in terms of Lua. ^[Lua:5.4](https://www.lua.org/manual/5.4/manual.html#pdf-pcall) ^[Lua:8.4](https://www.lua.org/pil/8.4.html), ^[Lua:8.5](https://www.lua.org/pil/8.5.html)
+🔹 Lua `pcall` `status, res`
 
-You can contrast that with C, where the behavior of many wrong programs can only be explained
+🔹 Elixir Error Monad `{:error, reason} | {:ok, value}`
+
+🔹 Rust `Result<T, E>`
+
+🔹 Go `[]error`
+
+**with superpowers** 🦄!
+
+> In Lua Errors are detected and explained in terms of Lua. ^[Lua:5.4](https://www.lua.org/manual/5.4/manual.html#pdf-pcall) ^[Lua:8.4](https://www.lua.org/pil/8.4.html), ^[Lua:8.5](https://www.lua.org/pil/8.5.html)
+>
+> You can contrast that with C, where the behavior of many wrong programs can only be explained
 in terms of the underling hardware and error positions are given as a program counter
-
-Activities start from a call by the application, usually asking to run a chunk.
-
-If there is any error, this call returns an error code and the application can take appropriate actions
+>
+> Activities start from a call by the application, usually asking to run a chunk.
+>
+> If there is any error, this call returns an error code and the application can take appropriate actions
 
 ---
 
