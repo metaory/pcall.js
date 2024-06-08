@@ -20,9 +20,8 @@
 
 <div align=center>
   <h3>use basic</h3>
-  <img alt="pcall_use-static" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/pcall-usage.png">
-  <a
-  href="https://github.com/metaory/pcall.js/blob/master/.github/assets/pcall-usage.js">pcall-usage.js</a>
+  <img alt="pcall_use-static" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/usage.png">
+  <a href="https://github.com/metaory/pcall.js/blob/master/.github/assets/usage.js">usage.js</a>
 </div>
 
 ---
@@ -126,9 +125,9 @@ import { readFile } from 'node:fs/promises'
 import Pcall from 'pcall.js'
 
 const pcall = new Pcall({
-  onFinally: () => {},
-  onSuccess: (args, res) => log({ res, args }, true),
-  onFailure: (args, err) => log({ err, args }, false),
+  onSuccess: console.log,
+  onFailure: console.error,
+  onFinally: () => { /* 💣 💣 💥 */ },
   transformOnSuccess: (args, res) => res,
   transformOnFailure: (args, err) => err,
   noError: false,
