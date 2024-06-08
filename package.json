@@ -1,7 +1,7 @@
 {
   "name": "pcall.js",
   "version": "0.4.12-0",
-  "description": "🛟 Handle Errors as Values ·· 📦 Zero-dependency",
+  "description": "🛟 Errors as Values ·· 📦 Zero-dependency",
   "author": "metaory <metaory@gmail.com>",
   "bugs": "https://github.com/metaory/pcall.js/issues",
   "homepage": "https://github.com/metaory/pcall.js#readme",
@@ -12,10 +12,10 @@
     "node": ">=20"
   },
   "scripts": {
-    "dev": "node --test --watch test/pcall.canary.js",
-    "test": "node --test --test-concurrency 4",
+    "dev": "node --test --watch test/pcall.flush.js",
+    "test": "node --test --test-concurrency 1",
     "watch:test": "node --test --watch",
-    "watch:build": "watchexec -w src -d 3000 npm run build",
+    "watch:build": "watchexec -w src -d 300 npm run build",
     "build": "npx unbuild",
     "build:demo": "sh .github/scripts/gen-img",
     "build:stub": "npx unbuild --stub"

@@ -4,7 +4,7 @@ Pcall.js
 <div align=center>
   <img alt="logo-of-pcall" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/logo.png" width="50%">
   <h2>Errors as Values</h2>
-  <h5>zero-dependency</h5>
+  <h5>unwrap/expand to array-like safe tuple results</h5>
   ╶─╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶─╴
 </div>
 
@@ -19,21 +19,25 @@ Pcall.js
 - 〽️ Minimal Obsessive Disorder
 
 ---
+
 <br>
 <br>
 
 <div align=center>
   <h3>use basic</h3>
+  [use-basic.js](.github/assets/use-basic.js)
   <img alt="pcall_use-static" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/use-basic.png">
   <br>
   <hr>
-  <h3>use options</h3>
-  <img alt="pcall_use-options" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/use-options.png">
-  <br>
-  <hr>
   <h3>use default</h3>
+  [use-default.js](.github/assets/use-options.js)
   <img alt="pcall_use-default" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/use-default.png">
+  <hr>
+  <h3>use options</h3>
+  [use-options.js](.github/assets/use-options.js)
+  <img alt="pcall_use-options" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/use-options.png">
   <p>create new safe utilities with shared side-effect behavior</p>
+  <br>
 </div>
 <br>
 
@@ -41,6 +45,8 @@ Pcall.js
 
 Inspiration
 -----------
+🔹 `pcall.js` is heavily inspired by Lua `pcall` `status, res`, Elixir Error Monad `{:error, reason} | {:ok, value}`, Go `[]error`, Rust `Result<T, E>` **with superpowers** 🦄!
+
 In Lua Errors are detected and explained in terms of Lua. ^[Lua:5.4](https://www.lua.org/manual/5.4/manual.html#pdf-pcall) ^[Lua:8.4](https://www.lua.org/pil/8.4.html), ^[Lua:8.5](https://www.lua.org/pil/8.5.html)
 
 You can contrast that with C, where the behavior of many wrong programs can only be explained
@@ -49,8 +55,6 @@ in terms of the underling hardware and error positions are given as a program co
 Activities start from a call by the application, usually asking to run a chunk.
 
 If there is any error, this call returns an error code and the application can take appropriate actions
-
-🔹 `pcall.js` is heavily inspired by Lua `pcall` **with superpowers** 🦄!
 
 ---
 
@@ -66,13 +70,13 @@ Instead, `pcall` catches the error and returns a tuple.
 
 Its first element is the **error code** ~~status code~~ (a boolean),
 
-Which is `false` ~~`true`~~ if the call succeeds without errors.
+Which is `false` if the call succeeds without errors.
 
 And all results from the call, on second element; `[false, {res}]`
 
 In case of any error,
 
-Pcall returns `true` ~~`false`~~ plus the error message; `[true, {err}]`
+Pcall returns `true`  plus the error message; `[true, {err}]`
 
 ---
 
@@ -131,7 +135,6 @@ const res = await readJson(path)
 log(res.hogo) // fuga
 ```
 
-
 Options
 -------
 ```js
@@ -139,11 +142,11 @@ import { readFile } from 'node:fs/promises'
 import Pcall from 'pcall.js'
 
 const pcall = new Pcall({
+  onFinally: () => {},
   onSuccess: (args, res) => log({ res, args }, true),
   onFailure: (args, err) => log({ err, args }, false),
   transformOnSuccess: (args, res) => res,
-  transformOnFailure: (args, res) => res,
-  cleanup: () => {},
+  transformOnFailure: (args, err) => err,
   noError: false,
   noTrace: false,
 })
