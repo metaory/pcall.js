@@ -8,7 +8,7 @@ const pcall = new Pcall({
   onSuccess: (args, res) => log({ res, args }, true),
   onFailure: (args, err) => log({ err, args }, false),
   transformOnSuccess: (args, res) => res,
-  transformOnFailure: (args, res) => res,
+  transformOnFailure: (args, err) => err,
   cleanup: () => {},
   noError: false,
   noTrace: false,

@@ -7,7 +7,7 @@ const readJson = new Pcall({
   noError: true,
   args: [{ encoding: 'utf8' }],
   transformOnSuccess: (args, res) => JSON.parse(res),
-  transformOnFailure: (args, { name, message }) => ({ name, message }),
+  transformOnFailure: (args, err) => err.message,
 })
 
 const path = 'test/sample-good.json'
