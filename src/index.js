@@ -52,7 +52,7 @@ class Pcall {
       const out = this.transformOnFailure(args, err)
 
       return this.noError ? out : [true, out]
-    } finally { void this.finally(); }
+    } finally { void this.onFinally(); }
   }
 }
 
