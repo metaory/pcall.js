@@ -2,18 +2,17 @@
   <h1>PCALL<sub>.js</sub></h1>
   <img alt="logo-of-pcall" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/icon.png" width="168px">
   <h2>Errors as Values</h2>
-    ╶─╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶─╴
   <h5>unwrap/expand to array-like safe tuple results</h5>
     ╶─╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶─╴
   <br>
-  <p> 🧬 Lifecycle Hooks</p>
-  <p> 📦 Zero Dependency</p>
-  <p> 📍 Concise Signature</p>
-  <p> 🎌 Group Side Effects</p>
-  <p> 🛑 try/catch ~~HELL~ 👹</p>
-  <p> 🌟 Better Visibility and Control</p>
-  <p> 🌐 Works in ESM & CJS</p>
-  <p> 〽️ Minimal Obsessive Disorder</p>
+  <p>🧬 Lifecycle Hooks</p>
+  <p>📦 Zero Dependency</p>
+  <p>📍 Concise Signature</p>
+  <p>🎌 Group Side Effects</p>
+  <p>🛑 try/catch ~~HELL~ 👹</p>
+  <p>🌟 Better Visibility and Control</p>
+  <p>🌐 Works in ESM & CJS</p>
+  <p>〽️ Minimal Obsessive Disorder</p>
 </div>
 
 ---
@@ -136,7 +135,7 @@ import Pcall from 'pcall.js'
 const pcall = new Pcall({
   onSuccess: console.log,
   onFailure: console.error,
-  onFinally: () => { /* 💣 💣 💥 */ },
+  onFinally: (args) => { /* 💣 💣 💥 */ },
   transformOnSuccess: (args, res) => res,
   transformOnFailure: (args, err) => err,
   noError: false,

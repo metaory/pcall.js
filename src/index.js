@@ -24,15 +24,15 @@ class Pcall {
 
   transformOnFailure(args, err) { return err; }
 
-  onSuccess(args, res) { console.info('[DEF]:onSuccess', { args, res }); }
+  onSuccess(args, res) { console.info('@OK', { args, res }); }
 
-  onFailure(args, err) { console.error('[DEF]:onFailure', { args, err }); }
+  onFailure(args, err) { console.error('@NO', { args, err }); }
 
-  onFinally(opts) {
-    opts.name = 'PCALL::TRACE'
-    opts.message ??= 'N/A'
-    Error.captureStackTrace(opts)
-    opts.noTrace || void console.trace(opts.stack)
+  onFinally(args) {
+    args.name = 'PCALL::TRACE'
+    args.message ??= 'N/A'
+    Error.captureStackTrace(args)
+    this.noTrace || void console.trace(args.stack)
   }
 
   async exec(fn, ...args) {
@@ -52,7 +52,7 @@ class Pcall {
       const out = this.transformOnFailure(args, err)
 
       return this.noError ? out : [true, out]
-    } finally { void this.onFinally(); }
+    } finally { void this.onFinally(args); }
   }
 }
 
