@@ -7,12 +7,12 @@
   <br>
   <p>🧬 Lifecycle Hooks</p>
   <p>📦 Zero Dependency</p>
-  <p>📍 Concise Signature</p>
-  <p>🎌 Group Side Effects</p>
-  <p>🛑 <s>try/catch</s> HELL 👹</p>
+  <p>🎯 Concise Signature</p>
+  <p>💠 Group Side Effects</p>
+  <p>⛔ <s>try/catch</s> HELL 👹</p>
   <p>🌟 Better Visibility and Control</p>
   <p>🌐 Works in ESM & CJS</p>
-  <p>◽ Minimal Obsessive Disorder</p>
+  <p>✱ Minimal Obsessive Disorder</p>
 </div>
 
 ---
