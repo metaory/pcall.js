@@ -135,9 +135,10 @@ import Pcall from 'pcall.js'
 const pcall = new Pcall({
   onSuccess: console.log,
   onFailure: console.error,
-  onFinally: (args) => { /* 💣 💣 💥 */ },
+  onFinally: (args, span) => { /* 💣 💣 💥 */ },
   transformOnSuccess: (args, res) => res,
   transformOnFailure: (args, err) => err,
+  timeout: 60_000,
   noError: false,
   noTrace: false,
 })

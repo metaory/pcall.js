@@ -12,7 +12,7 @@
     "node": ">=20"
   },
   "scripts": {
-    "dev": "node --test --watch test/pcall.flush.js",
+    "dev": "node  --watch test/spec.flush.js",
     "test": "node --test --test-concurrency 1",
     "watch:test": "node --test --watch",
     "watch:build": "watchexec -w src -d 300 npm run build",

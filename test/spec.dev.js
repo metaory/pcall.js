@@ -5,7 +5,7 @@ import {
   // strictEqual
 } from 'node:assert'
 import { test } from 'node:test'
-import { readFile } from 'node:fs/promises'
+// import { readFile } from 'node:fs/promises'
 
 import Pcall from '../src/index.js'
 
@@ -16,24 +16,22 @@ const line = (c = '═') => log(Array.from({ length: process.stdout.columns }, (
 log(Pcall)
 line('_')
 
-// const wait = (s = 1) => new Promise(resolve => setTimeout(resolve, s * 1_000))
+const wait = (s = 1, signal) =>
+  new Promise(resolve => setTimeout(() => resolve(`okk after ${s}s`), s * 1_000))
 
 line('+')
 
-test('---NO_ERROR--- [GOOD]', async () => {
+test('---DEV-------- [GOOD]', async () => {
   line('#')
-  const path = 'test/sample-good.json'
-  const opts = { encoding: 'utf8' }
   const pcall = new Pcall({
-    noError: true,
+    timeout: 2,
     onSuccess: (args, res) => {
-      console.log('CUSTOM onSuccess handler', {args, res})
+      console.log('CUSTOM onSuccess handler', { args, res })
     },
-    onFailure: 'foo',
   })
   log('pcall', pcall)
-  const res = await pcall(readFile, path, opts)
-  log('@NO_ERROR::', res , '::')
+  const [err, res] = await pcall(wait, 7)
+  log('@DEV::', { err, res }, '::')
   ok(res)
 })
 // process.exit()
