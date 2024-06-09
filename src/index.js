@@ -1,4 +1,8 @@
 class Pcall {
+  #tick
+  #span
+  #func
+
   constructor(opt = {}) {
     ;[
       'onSuccess',
@@ -12,23 +16,33 @@ class Pcall {
       if (x in opt && typeof opt[x] === typeof this[x]) this[x] = opt[x]
     })
   }
+
   [Symbol.iterator] = function* () {
     yield true
     yield new TypeError('NO AWAIT')
   }
-  noTrace = true
 
+  noTrace = true
   noError = false
 
-  transformOnSuccess(args, res) { return res; }
+  transformOnSuccess(args, res = {}) {
+    return res
+  }
 
-  transformOnFailure(args, err) { return err; }
+  transformOnFailure(args, err) {
+    return err
+  }
 
-  onSuccess(args, res) { console.info('@OK', { args, res }); }
+  onSuccess(args, res) {
+    console.info('@OK', { args, res })
+  }
 
-  onFailure(args, err) { console.error('@NO', { args, err }); }
+  onFailure(args, err) {
+    console.error('@NO', { args, err })
+  }
 
-  onFinally(args) {
+  onFinally(args, func, span) {
+    console.debug('[OK]: fulfilled', func, args, 'in', span, 's')
     args.name = 'PCALL::TRACE'
     args.message ??= 'N/A'
     Error.captureStackTrace(args)
@@ -37,6 +51,9 @@ class Pcall {
 
   async exec(fn, ...args) {
     try {
+      this.#tick = performance.now()
+      this.#func = fn.name
+
       if (this.args) args.unshift(this.args)
 
       const res = await fn(...args)
@@ -52,7 +69,10 @@ class Pcall {
       const out = this.transformOnFailure(args, err)
 
       return this.noError ? out : [true, out]
-    } finally { void this.onFinally(args); }
+    } finally {
+      this.#span = +((performance.now() - this.#tick) / 1_000).toFixed(2)
+      void this.onFinally(args, this.#func, this.#span)
+    }
   }
 }
 

@@ -12,7 +12,7 @@ const opts = { encoding: 'utf8' }
 // · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 {
   const pcall = new Pcall({
-    onFinally: () => { /* 💣 💣 💥 */ },
+    onFinally: (args, func, span) => { /* 💣 💣 💥 */ },
     onFailure: (args, err) => dispatch('slack', args, err),
     transformOnFailure: (args, err) => ({ mod: 'xorg', err }),
   })

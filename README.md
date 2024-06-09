@@ -1,9 +1,9 @@
 <div align="center">
-  <h1>PCALL<sub>.js</sub></h1>
   <img alt="logo-of-pcall" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/icon.png" width="168px">
-  <h2>Result/Monad like tuples for JS</h2>
+  <h1>Ƥ𝖢𐤠LL<sub>.ᴊꜱ</sub></h1>
+  <h3>Result/Monad like tuples for JS</h3>
   <h4>unwrap promises safely with minimum footprint</h4>
-    ╶─╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶╴╶─╴
+    ── ╶╴╶╴╶╴╶╴╶╴╶╴╶╴ ──
   <br>
   <p>🧬 Lifecycle Hooks</p>
   <p>📦 Zero Dependency</p>
@@ -135,7 +135,7 @@ import Pcall from 'pcall.js'
 const pcall = new Pcall({
   onSuccess: console.log,
   onFailure: console.error,
-  onFinally: (args) => { /* 💣 💣 💥 */ },
+  onFinally: (args, func, span) => { /* 💣 💣 💥 */ },
   transformOnSuccess: (args, res) => res,
   transformOnFailure: (args, err) => err,
   noError: false,
