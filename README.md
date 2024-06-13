@@ -5,7 +5,7 @@
   <h4>unwrap promises safely with minimum footprint</h4>
     ── ╶╴╶╴╶╴╶╴╶╴╶╴╶╴ ──
   <div align="center">
-    <img alt="pcall_basic" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/basic.png" width="400px">
+    <img alt="pcall_basic" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/basic.png" width="600px">
   </div>
   <br>
   <p>🧬 Lifecycle Hooks</p>
