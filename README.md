@@ -3,10 +3,10 @@
   <h1>Ƥ𝖢𐤠LL<sub>.ᴊꜱ</sub></h1>
   <h3>Result/Monad like tuples for JS</h3>
   <h4>unwrap promises safely with minimum footprint</h4>
-    ── ╶╴╶╴╶╴╶╴╶╴╶╴╶╴ ──
   <div align="center">
     <img alt="pcall_basic" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/basic.png" width="600px">
   </div>
+    ── ╶╴╶╴╶╴╶╴╶╴╶╴╶╴ ──
   <br>
   <p>🧬 Lifecycle Hooks</p>
   <p>📦 Zero Dependency</p>
