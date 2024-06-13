@@ -138,6 +138,7 @@ const pcall = new Pcall({
   onFinally: (args, func, span) => { /* 💣 💣 💥 */ },
   transformOnSuccess: (args, res) => res,
   transformOnFailure: (args, err) => err,
+  timeout: 60_000,
   noError: false,
   noTrace: false,
 })

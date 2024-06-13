@@ -1,7 +1,7 @@
 /* eslint no-unused-vars: "off" */
 /* eslint no-undef: "off" */
-import { readFile } from 'node:fs/promises'
 import Pcall from 'pcall.js'
+import { readFile } from 'node:fs/promises'
 
 const path = 'package.json'
 const opts = { encoding: 'utf8' }
@@ -12,6 +12,7 @@ const opts = { encoding: 'utf8' }
 // · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 {
   const pcall = new Pcall({
+    timeout: 3_000,
     onFinally: (args, func, span) => { /* 💣 💣 💥 */ },
     onFailure: (args, err) => dispatch('slack', args, err),
     transformOnFailure: (args, err) => ({ mod: 'xorg', err }),

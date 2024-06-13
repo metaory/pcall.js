@@ -3,9 +3,10 @@ import { setTimeout } from 'timers/promises'
 export class TimeoutError extends Error {
   constructor(message) {
     super(message)
-    this.name = 'TimeoutError'
+    this.name = "TimeoutError"
   }
 }
+
 
 class Pcall {
   constructor(opt = {}) {
@@ -13,12 +14,14 @@ class Pcall {
       'onSuccess',
       'onFailure',
       'onFinally',
+      'timeout',
       'transformOnSuccess',
       'transformOnFailure',
       'noTrace',
       'noError',
     ].forEach(x => {
       if (x in opt && typeof opt[x] === typeof this[x]) this[x] = opt[x]
+      else console.log(x, 'default is', this[x])
     })
   }
 
@@ -36,7 +39,7 @@ class Pcall {
   #tick
   noTrace = true
   noError = false
-  timeout = 3_000
+  timeout = 8_000
   transformOnSuccess = res => res
   transformOnFailure = err => err
   onSuccess = res => console.info('@OK', res)
@@ -61,7 +64,7 @@ class Pcall {
 
     return new Promise(resolve => {
       Promise.race([fn(...args), timer])
-        .then(this.#ack)
+        .then(this.#ack) // TODO then(PASS, FAIL)
         .then(this.transformOnSuccess)
         .then(res => {
           resolve([false, res])

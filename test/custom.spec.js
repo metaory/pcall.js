@@ -16,8 +16,7 @@ const line = (c = '═') => log(Array.from({ length: process.stdout.columns }, (
 log(Pcall)
 line('_')
 
-// const mkpromise = (s = 3, pass = true) =>
-//   new Promise((res, rej) => setTimeout(pass ? res : rej, s * 1_000))
+// const mkpromise = (s = 3, pass = true) => new Promise((res, rej) => setTimeout(pass ? res : rej, s * 1_000))
 
 line('+')
 
