@@ -1,6 +1,6 @@
 {
   "name": "pcall.js",
-  "version": "0.6.4-3",
+  "version": "0.7.0",
   "description": "✱ Minimal Result/Monad like tuples for JS ── zero-dependency ␥",
   "author": "metaory <metaory@gmail.com>",
   "bugs": "https://github.com/metaory/pcall.js/issues",
