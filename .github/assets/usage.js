@@ -1,34 +1,21 @@
-/* eslint no-unused-vars: "off" */
-/* eslint no-undef: "off" */
 import Pcall from 'pcall.js'
-import { readFile } from 'node:fs/promises'
 
-const path = 'package.json'
-const opts = { encoding: 'utf8' }
-// · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 {
-  const [err, res] = await Pcall(readFile, path, opts)
+  const [err, res] = await Pcall(asyncFn, a, b, c /* ··· */)
 }
-// · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
 {
   const pcall = new Pcall({
-    timeout: 3_000,
-    onFinally: (args, func, span) => { /* 💣 💣 💥 */ },
-    onFailure: (args, err) => dispatch('slack', args, err),
-    transformOnFailure: (args, err) => ({ mod: 'xorg', err }),
+    onSuccess: console.log,
+    onFailure: console.error,
+    onFinally: console.info,
+    timeout: 30_000,
+    transformOnSuccess: res => res,
+    transformOnFailure: err => err,
+    noTrace: false,
   })
-
-  const [err, res] = await pcall(readFile, path, opts)
+  const [err, res] = await pcall(asyncFn, a, b, c /* ··· */)
 }
-// · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
-{
-  const readJson = new Pcall({
-    fn: readFile,
-    noError: true,
-    onSuccess: console.info,
-    args: [{ encoding: 'utf8' }],
-    transformOnSuccess: (_, res) => JSON.parse(res),
-  })
 
-  const res = await readJson(path)
-}
+// :Fulfill [null, res]
+// :Reject  [err, null]

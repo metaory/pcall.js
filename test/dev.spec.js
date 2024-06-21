@@ -1,30 +1,24 @@
 /* eslint no-unused-vars: "off" */
 /* eslint no-undef: "off" */
-import {
-  // fail,
-  ok,
-  // rejects,
-  // strictEqual
-} from 'node:assert'
+import { ok, } from 'node:assert'
 import { test } from 'node:test'
 import { readFile } from 'node:fs/promises'
 
+import { sep, mkPromise } from './test-util.js'
 import Pcall from '../src/index.js'
 
 const { log } = console
 
-const mkpromise = (s = 3, pass = true) => new Promise((res, rej) => setTimeout(() => { pass ? res('YOKK') : rej('nOPA')}, s * 1_000))
-
-const line = (c = '═') => log(Array.from({ length: process.stdout.columns }, () => c).join(''))
+const sep = (c = '═') => log(Array.from({ length: process.stdout.columns }, () => c).join(''))
 
 log(Pcall)
-line('_')
+sep('_')
 
 
-line('+')
+sep('+')
 
 test('---DEV--- [GOOD]', async () => {
-  line('#')
+  sep('#')
   const path = 'test/sample-good.json'
   const opts = { encoding: 'utf8' }
   const pcall = new Pcall({

@@ -3,13 +3,10 @@
   <h1>Ƥ𝖢𐤠LL<sub>.ᴊꜱ</sub></h1>
   <h3>Result/Monad like tuples for JS</h3>
   <h4>unwrap promises safely with minimum footprint</h4>
-  <div align="center">
-    <img alt="pcall_basic" src="https://raw.githubusercontent.com/metaory/pcall.js/master/.github/assets/basic.png" width="600px">
-  </div>
     ── ╶╴╶╴╶╴╶╴╶╴╶╴╶╴ ──
   <br>
+  <p>📦 Extremely Small</p>
   <p>🧬 Lifecycle Hooks</p>
-  <p>📦 Zero Dependency</p>
   <p>🎯 Concise Signature</p>
   <p>💠 Group Side Effects</p>
   <p>⛔ <s>try/catch</s> HELL 👹</p>
@@ -41,20 +38,14 @@ Inspiration
 
 **with superpowers** 🦄!
 
-> In Lua Errors are detected and explained in terms of Lua. ^[Lua:5.4](https://www.lua.org/manual/5.4/manual.html#pdf-pcall) ^[Lua:8.4](https://www.lua.org/pil/8.4.html), ^[Lua:8.5](https://www.lua.org/pil/8.5.html)
->
-> You can contrast that with C, where the behavior of many wrong programs can only be explained
-in terms of the underling hardware and error positions are given as a program counter
->
-> Activities start from a call by the application, usually asking to run a chunk.
->
-> If there is any error, this call returns an error code and the application can take appropriate actions
-
 ---
 
 SYNOPSIS
 --------
 `pcall({f}, {arg1}, {...})`
+
+`[err, res]`
+
 
 `pcall()` Calls function `{f}` with the given arguments in **protected mode**.
 
@@ -62,15 +53,12 @@ This means that any error inside `{f}` is not propagated;
 
 Instead, `pcall` catches the error and returns a tuple.
 
-Its first element is the **error code** ~~status code~~ (a boolean),
+Its first element is the `err` object,
 
-Which is `false` if the call succeeds without errors.
+Which is `null` if the call succeeds without errors.
 
-And all results from the call, on second element; `[false, {res}]`
+And all results from the call, on second element; `[null, {res}]`
 
-In case of any error,
-
-Pcall returns `true`  plus the error message; `[true, {err}]`
 
 ---
 
@@ -87,6 +75,26 @@ import Pcall from 'pcall.js'
 // CJS
 const Pcall = require('pcall.js')
 ```
+
+```js
+const [err, res] = await Pcall(asyncFn, a, b, c, /* ··· */)
+```
+
+```js
+const pcall = new Pcall({
+  onSuccess: console.log,
+  onFailure: console.error,
+  onFinally: console.info,
+  timeout: 30_000,
+  transformOnSuccess: (res) => res,
+  transformOnFailure: (err) => err,
+  noTrace: false
+})
+const [err, res] = await pcall(asyncFn, a, b, c, /* ··· */)
+```
+
+	:Fulfill [null, res]
+	:Reject  [err, null]
 
 Convert
 -------
@@ -109,24 +117,17 @@ const [err, res] = await Pcall(readFile, './package.json', { encoding: 'utf8' })
 err && throw new Error("XYZZY", { cause: err });
 
 // ─────────────────
-// 🔸 NO @ITERATOR
-import Pcall from 'pcall.js'
-const pcall = new Pcall({ noError: true })
-const res = await pcall(readFile, './package.json', { encoding: 'utf8' })
-
-// ─────────────────
 // 🔸 MOCK
-const readJson = new Pcall({
-  fn: readFile,
-  noError: true,
-  args: [{ encoding: 'utf8' }],
-  transformOnSuccess: (args, res) => JSON.parse(res),
-  transformOnFailure: (args, { name, message }) => ({ name, message }),
-})
-const path = 'test/sample-good.json'
-
-const res = await readJson(path)
-log(res.hogo) // fuga
+// const readJson = new Pcall({
+//   fn: readFile,
+//   args: [{ encoding: 'utf8' }],
+//   transformOnSuccess: (res) => JSON.parse(res),
+//   transformOnFailure: (err) => err.message,
+// })
+// const path = 'test/sample-good.json'
+//
+// const res = await readJson(path)
+// log(res.hogo) // fuga
 ```
 
 Options
@@ -139,10 +140,9 @@ const pcall = new Pcall({
   onSuccess: console.log,
   onFailure: console.error,
   onFinally: (args, func, span) => { /* 💣 💣 💥 */ },
-  transformOnSuccess: (args, res) => res,
-  transformOnFailure: (args, err) => err,
-  timeout: 60_000,
-  noError: false,
+  transformOnSuccess: (res) => res,
+  transformOnFailure: (err) => err,
+  timeout: 30_000,
   noTrace: false,
 })
 
@@ -152,12 +152,15 @@ const opts = { encoding: 'utf8' }
 const [err, res] = await pcall(readFile, path, opts)
 ```
 
+---
+
 #### 💡 Check [test/](test/) files for more examples
 
 ---
 
 Development
 -----------
+
 ```bash
 # run test playground in watch mode
 npm run dev
@@ -180,7 +183,7 @@ TODO
 - [.] 🔧 ESLint
 - [o] 📖 Docs
 - [o] ⚠️  Tests
-- [.] 💡 Examples
+- [o] 💡 Examples
 
 ---
 

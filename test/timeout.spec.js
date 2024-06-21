@@ -1,53 +1,41 @@
 /* eslint no-unused-vars: "off" */
 /* eslint no-undef: "off" */
-import {
-  // fail,
-  ok,
-  // rejects,
-  // strictEqual
-} from 'node:assert'
+import { ok, } from 'node:assert'
 import { test } from 'node:test'
 import { readFile } from 'node:fs/promises'
 
+import { sep, mkPromise } from './test-util.js'
 import Pcall from '../src/index.js'
 
-import C from './util.js'
+const { clear, debug, info, log, log: l, trace } = console
 
-const { log } = console
-log(Fg)
-log('foo', C.f1('fo'), 'zz')
-process.exit()
-log(Pcall)
+const path = 'test/sample-good.json'
+const opts = { encoding: 'utf8' }
 
-const mkpromise = (s = 3, pass = true) =>
-  new Promise(
-    (res, rej) =>
-      log(`to pass: ${pass} in ${s}`) &&
-      setTimeout(() => {
-        ;({ true: res, false: rej })[pass]({ feeling: 'YOKK', after: `${s}s`, pass_expected: pass })
-      }, s * 1_000)
-  )
+sep('#')
+const CASE = 'TIMEOUT'
 
-const line = (c = '═') => log(Array.from({ length: process.stdout.columns }, () => c).join(''))
+test(`-${CASE} EXPECT [FAIL:TimeoutError]`, async () => {
+  const expect = 'FAIL'
+  const timeout = 2_000
+  const msg = `Expected: ${C6}${expect}${C0}`
 
-line('_')
-
-line('+')
-
-test('---DEV--- [GOOD]', async () => {
-  line('#')
-  const path = 'test/sample-good.json'
-  const opts = { encoding: 'utf8' }
   const pcall = new Pcall({
-    // onSuccess: (args, res) => {
-    //   console.log('CUSTOM onSuccess handler', {args, res})
-    // },
-    // onFailure: 'foo',
+    onSuccess: console.info,
+    onFailure: err => console.error(err.message),
+    onFinally: () =>
+      console.info(
+        `${C3}@onFinally${C0}${msg}`,
+        `DUE TO ${C3}${CASE}${C0}`,
+        'WAS SET TO TIMEOUT IN',
+        timeout
+      ),
+    timeout,
   })
-  log('pcall', pcall)
-  // const [err, res] = await pcall(readFile, path, opts)
-  const [err, res] = await pcall(mkpromise, 4, false)
-  log('@DEV::', { err, res }, '::')
+  const [err, res] = await pcall(mkPromise, timeout, expect === 'PASS')
+
+  log(C4, 'RES::', { err, res }, '::', C0)
+
   ok(res)
 })
 // process.exit()

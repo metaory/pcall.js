@@ -3,10 +3,9 @@ import { setTimeout } from 'timers/promises'
 export class TimeoutError extends Error {
   constructor(message) {
     super(message)
-    this.name = "TimeoutError"
+    this.name = 'TimeoutError'
   }
 }
-
 
 class Pcall {
   constructor(opt = {}) {
@@ -17,12 +16,10 @@ class Pcall {
       'timeout',
       'transformOnSuccess',
       'transformOnFailure',
-      'noTrace',
-      'noError',
-    ].forEach(x => {
-      if (x in opt && typeof opt[x] === typeof this[x]) this[x] = opt[x]
-      else console.log(x, 'default is', this[x])
-    })
+      'noTrace'
+    ]
+      .filter(x => x in opt && typeof opt[x] === typeof this[x])
+      .forEach(x => (this[x] = opt[x]))
   }
 
   [Symbol.iterator] = function* () {
@@ -38,14 +35,13 @@ class Pcall {
   #span
   #tick
   noTrace = true
-  noError = false
-  timeout = 8_000
+  timeout = 3_000
   transformOnSuccess = res => res
   transformOnFailure = err => err
   onSuccess = res => console.info('@OK', res)
   onFailure = err => console.error('@NO', err)
   onFinally(args, func, span) {
-    console.debug('[OK]: Finally Fulfilled', func, args, 'in', span, 's')
+    console.debug('@onFinally', args, func, span, 's')
     args.name = 'PCALL::TRACE'
     args.message ??= 'N/A'
     Error.captureStackTrace(args)
@@ -56,7 +52,7 @@ class Pcall {
     this.#tick = performance.now()
     this.#func = fn.name
 
-    if (this.args) args.unshift(this.args)
+    this.args && args.unshift(this.args)
 
     const ac = new AbortController()
     const signal = ac.signal
@@ -64,16 +60,16 @@ class Pcall {
 
     return new Promise(resolve => {
       Promise.race([fn(...args), timer])
-        .then(this.#ack) // TODO then(PASS, FAIL)
+        .then(this.#ack)
         .then(this.transformOnSuccess)
         .then(res => {
-          resolve([false, res])
+          resolve([null, res])
           return res
         })
         .then(this.onSuccess)
         .catch(this.transformOnFailure)
         .then(err => {
-          resolve([true, err])
+          resolve([err, null])
           return err
         })
         .then(this.onFailure)
