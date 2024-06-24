@@ -27,7 +27,6 @@ jobs:
 
       - name: Setup Git GPG
         run: |
-          git config --global --unset gpg.format
           git config --global user.signingkey ${{ secrets.XCI_GPG }}
           git config --global commit.gpgsign true
 
