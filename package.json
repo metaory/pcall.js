@@ -1,6 +1,6 @@
 {
   "name": "pcall.js",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "✱ Minimal Result/Monad like tuples for JS ── zero-dependency ␥",
   "author": "metaory <metaory@gmail.com>",
   "bugs": "https://github.com/metaory/pcall.js/issues",
@@ -66,5 +66,9 @@
     "wrapper",
     "zero-dependency"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@changesets/changelog-github": "^0.5.0",
+    "@changesets/cli": "^2.27.5"
+  }
 }
