@@ -16,7 +16,7 @@
     "test": "node --test --test-concurrency 1",
     "watch:test": "node --test --watch",
     "watch:build": "watchexec -w src -d 300 npm run build",
-    "version": "npm i @changesets/cli @changesets/changelog-github && npm exec changeset version",
+    "version": "npm i @changesets/cli @changesets/changelog-github && npm run build && npm exec changeset version",
     "build": "npx unbuild",
     "build:demo": "sh .github/scripts/gen-img",
     "build:stub": "npx unbuild --stub"
