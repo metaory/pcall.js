@@ -32,7 +32,7 @@ jobs:
       - name: Release PR
         uses: changesets/action@v1
         with:
-          version: npm install @changesets/cli && npx changeset version
+          version: "npm install @changesets/cli && npx changeset version"
           publish: npx changeset publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
