@@ -9,7 +9,7 @@
   "type": "module",
   "sideEffects": false,
   "engines": {
-    "node": ">=20"
+    "node": ">=18"
   },
   "scripts": {
     "dev": "node --test --watch test/pcall.flush.js",
