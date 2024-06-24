@@ -35,7 +35,7 @@ class Pcall {
   #span
   #tick
   noTrace = true
-  timeout = 3_000
+  timeout = 30_000
   transformOnSuccess = res => res
   transformOnFailure = err => err
   onSuccess = res => console.info('@OK', res)
