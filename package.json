@@ -65,9 +65,5 @@
     "wrapper",
     "zero-dependency"
   ],
-  "license": "MIT",
-  "dependencies": {
-    "@changesets/changelog-github": "^0.5.0",
-    "@changesets/cli": "^2.27.5"
-  }
+  "license": "MIT"
 }

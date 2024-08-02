@@ -1,6 +1,6 @@
 import { setTimeout } from 'timers/promises'
 
-export class TimeoutError extends Error {
+class TimeoutError extends Error {
   constructor(message) {
     super(message)
     this.name = 'TimeoutError'
