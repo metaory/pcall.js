@@ -152,6 +152,12 @@ const opts = { encoding: 'utf8' }
 const [err, res] = await pcall(readFile, path, opts)
 ```
 
+`onSuccess` runs only after a fulfill. `onFailure` runs only after a reject. A throw inside a hook does not change the tuple.
+
+`timeout` is milliseconds. `0` turns the race off. The timer does not abort `fn`, so the call keeps running.
+
+Every hook receives a trailing call record, `{ name, args, ms, error }`. `ms` is set before `onFinally`. `error` stays `null` on success. Hooks that ignore extra arguments stay valid.
+
 ---
 
 #### 💡 Check [test/](test/) files for more examples

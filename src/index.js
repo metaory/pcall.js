@@ -7,6 +7,8 @@ class TimeoutError extends Error {
   }
 }
 
+const swallow = fn => Promise.resolve().then(fn).catch(() => {})
+
 class Pcall {
   constructor(opt = {}) {
     ;[
@@ -16,7 +18,7 @@ class Pcall {
       'timeout',
       'transformOnSuccess',
       'transformOnFailure',
-      'noTrace'
+      'noTrace',
     ]
       .filter(x => x in opt && typeof opt[x] === typeof this[x])
       .forEach(x => (this[x] = opt[x]))
@@ -27,13 +29,6 @@ class Pcall {
     yield new TypeError('NO_AWAIT')
   }
 
-  #ack = x => {
-    if (x instanceof TimeoutError) throw x
-    return x
-  }
-  #func
-  #span
-  #tick
   noTrace = true
   timeout = 30_000
   transformOnSuccess = res => res
@@ -42,43 +37,50 @@ class Pcall {
   onFailure = err => console.error('@NO', err)
   onFinally(args, func, span) {
     console.debug('@onFinally', args, func, span, 's')
-    args.name = 'PCALL::TRACE'
-    args.message ??= 'N/A'
-    Error.captureStackTrace(args)
-    this.noTrace || void console.trace(args.stack)
+    if (this.noTrace) return
+    const traced = new Error('PCALL::TRACE')
+    Error.captureStackTrace(traced)
+    void console.trace(traced.stack)
   }
 
   exec(fn, ...args) {
-    this.#tick = performance.now()
-    this.#func = fn.name
-
+    const started = performance.now()
     this.args && args.unshift(this.args)
-
+    const call = { name: fn?.name ?? '', args, ms: 0, error: null }
     const ac = new AbortController()
-    const signal = ac.signal
-    const timer = setTimeout(this.timeout, new TimeoutError(), { signal })
+    const timer =
+      this.timeout > 0
+        ? setTimeout(this.timeout, new TimeoutError(), { signal: ac.signal })
+        : null
+    const work = Promise.resolve().then(() => fn(...args))
 
-    return new Promise(resolve => {
-      Promise.race([fn(...args), timer])
-        .then(this.#ack)
-        .then(this.transformOnSuccess)
-        .then(res => {
-          resolve([null, res])
-          return res
-        })
-        .then(this.onSuccess)
-        .catch(this.transformOnFailure)
+    const finish = outcome => {
+      ac.abort()
+      call.ms = performance.now() - started
+      const span = +(call.ms / 1_000).toFixed(2)
+      return swallow(() => this.onFinally(args, call.name, span, call)).then(() => outcome)
+    }
+
+    const fail = error =>
+      Promise.resolve()
+        .then(() => this.transformOnFailure(error))
+        .catch(failure => failure)
         .then(err => {
-          resolve([err, null])
-          return err
+          call.error = err
+          return swallow(() => this.onFailure(err, call)).then(() => finish([err, null]))
         })
-        .then(this.onFailure)
-        .finally(() => {
-          ac.abort()
-          this.#span = +((performance.now() - this.#tick) / 1_000).toFixed(2)
-          void this.onFinally(args, this.#func, this.#span)
-        })
-    })
+
+    const done = value =>
+      Promise.resolve()
+        .then(() => this.transformOnSuccess(value))
+        .then(res => swallow(() => this.onSuccess(res, call)).then(() => finish([null, res])))
+        .catch(fail)
+
+    const raced = timer ? Promise.race([work, timer]) : work
+    return raced.then(
+      value => (value instanceof TimeoutError ? fail(value) : done(value)),
+      fail,
+    )
   }
 }
 
