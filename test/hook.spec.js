@@ -115,6 +115,37 @@ test('a positive timeout wins without stopping the function', async () => {
   equal(state.settled, true)
 })
 
+test('default onFinally logs name and span, and a custom one still receives args', async () => {
+  const lines = []
+  const debug = console.debug
+  const info = console.info
+  console.debug = (...parts) => lines.push(parts.map(String).join(' '))
+  console.info = () => {}
+  const hiddenFn = () => {}
+  try {
+    const [err, res] = await Pcall(async function named() {
+      return 'ok'
+    }, hiddenFn)
+    equal(err, null)
+    equal(res, 'ok')
+  } finally {
+    console.debug = debug
+    console.info = info
+  }
+  const text = lines.join('\n')
+  ok(text.includes('@onFinally named'))
+  ok(text.endsWith('s'))
+  ok(!text.includes('[Function'))
+  ok(!text.includes('hiddenFn'))
+  const seen = []
+  const pcall = new Pcall({
+    ...quiet,
+    onFinally: args => seen.push(args),
+  })
+  await pcall(async value => value, hiddenFn)
+  deepEqual(seen, [[hiddenFn]])
+})
+
 test('onFinally does not mutate args', async () => {
   const seen = {}
   const pcall = new Pcall({

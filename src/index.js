@@ -21,7 +21,7 @@ class Pcall {
       'noTrace',
     ]
       .filter(x => x in opt && typeof opt[x] === typeof this[x])
-      .forEach(x => (this[x] = opt[x]))
+      .forEach(x => { this[x] = opt[x] })
   }
 
   [Symbol.iterator] = function* () {
@@ -35,8 +35,8 @@ class Pcall {
   transformOnFailure = err => err
   onSuccess = res => console.info('@OK', res)
   onFailure = err => console.error('@NO', err)
-  onFinally(args, func, span) {
-    console.debug('@onFinally', args, func, span, 's')
+  onFinally(_args, func, span) {
+    console.debug(`@onFinally ${func} ${span}s`)
     if (this.noTrace) return
     const traced = new Error('PCALL::TRACE')
     Error.captureStackTrace(traced)
@@ -45,7 +45,7 @@ class Pcall {
 
   exec(fn, ...args) {
     const started = performance.now()
-    this.args && args.unshift(this.args)
+    if (this.args) args.unshift(this.args)
     const call = { name: fn?.name ?? '', args, ms: 0, error: null }
     const ac = new AbortController()
     const timer =
