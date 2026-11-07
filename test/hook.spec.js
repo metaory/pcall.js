@@ -34,6 +34,26 @@ test('success calls onSuccess only', async () => {
   deepEqual(calls[0].args, [2, 3])
 })
 
+test('outcome hooks see the function duration', async () => {
+  const seen = []
+  const pcall = new Pcall({
+    ...quiet,
+    onSuccess: (_res, call) => seen.push(call.ms),
+    onFailure: (_err, call) => seen.push(call.ms),
+  })
+  await pcall(async () => {
+    await wait(40)
+    return 'ok'
+  })
+  const [err] = await pcall(async () => {
+    await wait(40)
+    throw new Error('nope')
+  })
+  equal(err.message, 'nope')
+  ok(seen[0] >= 30)
+  ok(seen[1] >= 30)
+})
+
 test('rejection calls onFailure only', async () => {
   const seen = []
   const calls = []

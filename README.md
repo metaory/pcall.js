@@ -156,7 +156,7 @@ const [err, res] = await pcall(readFile, path, opts)
 
 `timeout` is milliseconds. `0` turns the race off. The timer does not abort `fn`, so the call keeps running.
 
-Every hook receives a trailing call record, `{ name, args, ms, error }`. `ms` is set before `onFinally`. `error` stays `null` on success. Hooks that ignore extra arguments stay valid.
+Every hook receives a trailing call record, `{ name, args, ms, error }`. `ms` is set before `onSuccess`, `onFailure`, and `onFinally`, and it measures the wrapped function. `error` stays `null` on success. Hooks that ignore extra arguments stay valid.
 
 ---
 

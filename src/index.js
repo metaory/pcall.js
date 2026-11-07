@@ -56,7 +56,6 @@ class Pcall {
 
     const finish = outcome => {
       ac.abort()
-      call.ms = performance.now() - started
       const span = +(call.ms / 1_000).toFixed(2)
       return swallow(() => this.onFinally(args, call.name, span, call)).then(() => outcome)
     }
@@ -67,13 +66,17 @@ class Pcall {
         .catch(failure => failure)
         .then(err => {
           call.error = err
+          call.ms = performance.now() - started
           return swallow(() => this.onFailure(err, call)).then(() => finish([err, null]))
         })
 
     const done = value =>
       Promise.resolve()
         .then(() => this.transformOnSuccess(value))
-        .then(res => swallow(() => this.onSuccess(res, call)).then(() => finish([null, res])))
+        .then(res => {
+          call.ms = performance.now() - started
+          return swallow(() => this.onSuccess(res, call)).then(() => finish([null, res]))
+        })
         .catch(fail)
 
     const raced = timer ? Promise.race([work, timer]) : work
