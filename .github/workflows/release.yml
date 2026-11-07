@@ -1,4 +1,4 @@
-name: npm
+name: release
 
 on:
   push:
@@ -20,19 +20,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
       - name: Build artifact
-        run: npm run build
+        run: pnpm run build
 
       - name: Release PR
         uses: changesets/action@v1
         with:
-          version: npm exec --yes --package @changesets/cli --package @changesets/changelog-github -- changeset version
-          publish: npm exec --yes --package @changesets/cli --package @changesets/changelog-github -- changeset publish
+          version: pnpm dlx @changesets/cli version
+          publish: pnpm dlx @changesets/cli publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
